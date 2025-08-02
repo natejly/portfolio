@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import './App.css'
 
 import Home from './pages/Home'
-import P1 from './pages/p1'
+import P1 from './pages/P1'
 import P2 from './pages/P2'
 
 function ScrollRouter() {
