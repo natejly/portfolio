@@ -5,6 +5,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* Profile section styling */
 .profile-section h1 {
   margin: 0 !important;
@@ -32,6 +42,8 @@ body {
   letter-spacing: 0.05em;
   transition: all 0.12s ease;
   text-decoration: none;
+  /* Fixed width to prevent layout shift */
+  min-width: max-content;
 }
 
 /* Light mode navigation */
@@ -41,9 +53,9 @@ body {
 
 .light-mode .active .nav-text,
 .light-mode nav a:hover .nav-text {
-  font-size: 1.5rem;
   color: #000000;
   font-weight: 800;
+  /* Removed font-size and letter-spacing changes to prevent juttering */
 }
 
 /* Dark mode navigation */
@@ -53,9 +65,9 @@ body {
 
 .dark-mode .active .nav-text,
 .dark-mode nav a:hover .nav-text {
-  font-size: 1.5rem;
   color: #F5F5DC; /* cream */
   font-weight: 800;
+  /* Removed font-size and letter-spacing changes to prevent juttering */
 }
 
 /* Remove underlines from all links in nav */

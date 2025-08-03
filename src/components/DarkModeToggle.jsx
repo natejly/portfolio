@@ -31,7 +31,7 @@ const DarkModeToggle = () => {
         className={`
           relative inline-flex items-center h-6 rounded-full w-11 
           transition-colors duration-200 ease-in-out focus:outline-none 
-          focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 border-2
+          focus:ring-offset-2 border-2
           ${!isDarkMode ? 'bg-navy border-navy' : 'bg-white border-white'}
         `}
         aria-label="Toggle dark mode"
@@ -39,7 +39,7 @@ const DarkModeToggle = () => {
         <span
           className={`
             inline-block w-4 h-4 transform transition-transform duration-200 ease-in-out 
-            rounded-full shadow-lg ring-1 ring-gray-300
+            rounded-full shadow-lg ring-1 ring-navy-300 
             ${isDarkMode ? 'translate-x-5 bg-cream' : 'translate-x-1 bg-navy'}
           `}
         />
