@@ -5,8 +5,13 @@ body {
   overflow-x: hidden;
   
 }
-
+/* html, body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+} */
 /* Hide scrollbars */
+
+
 ::-webkit-scrollbar {
   display: none;
 }

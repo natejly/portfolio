@@ -15,11 +15,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Disable overscroll for html and body */
+html, body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #ffffff; /* Default to white */
+}
+
+/* Ensure root container takes full height */
+#root {
+  height: 100vh;
+  overscroll-behavior: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+  
   a:hover {
     color: #747bff;
   }
@@ -33,4 +50,25 @@
     color: #FFF0DB; /* cream */
     background-color: #13294B; /* navy */
   }
+  
+  /* Only apply dark background if no manual class is set */
+  html:not(.light-mode):not(.dark-mode), 
+  html:not(.light-mode):not(.dark-mode) body {
+    background-color: #13294B; /* navy */
+  }
+}
+
+/* Manual dark mode toggle - highest specificity */
+html.light-mode, 
+html.light-mode body,
+html.light-mode #root {
+  background-color: #ffffff !important;
+  color: #213547 !important;
+}
+
+html.dark-mode, 
+html.dark-mode body,
+html.dark-mode #root {
+  background-color: #13294B !important;
+  color: #FFF0DB !important;
 }
