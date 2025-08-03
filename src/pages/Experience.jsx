@@ -10,20 +10,23 @@ const ResumeCard = ({
   company,
   location,
   description,
-  skills
+  skills,
+  index
 }) => {
   const { isDarkMode } = useDarkMode();
   
   return (
-    <div className={`relative overflow-hidden rounded-2xl transition-colors duration-200 ease-out ${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-slate-800 via-navy/90 to-slate-800 border border-slate-600/30 hover:bg-slate-700/80' 
-        : 'bg-gradient-to-br from-white via-gray-50 to-white border border-gray-200/50 hover:bg-gray-100'
-    }`}>
+    <div 
+      className={`relative rounded-lg transition-all duration-200 hover:shadow-md ${
+        isDarkMode 
+          ? 'bg-slate-800 border border-slate-700 hover:border-slate-600' 
+          : 'bg-white border border-gray-200 hover:border-gray-300'
+      }`}
+    >
       
       {/* Timeline Indicator */}
-      <div className={`absolute left-0 top-0 w-1 h-full ${
-        isDarkMode ? 'bg-blue-400' : 'bg-blue-600'
+      <div className={`absolute left-0 top-0 w-1 h-full rounded-2xl${
+        isDarkMode ? 'bg-blue-400' : 'bg-blue-500'
       }`} />
       
       {/* Content Section */}
@@ -46,18 +49,22 @@ const ResumeCard = ({
           </div>
           
           {/* Date Range and Location */}
-          <div className="text-right">
-            <div className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap mb-2 ${
+          <div className="lg:text-right space-y-2">
+            <div className={`inline-flex items-center px-3 py-1 rounded-md text-sm font-medium ${
               isDarkMode 
-                ? 'bg-slate-600/50 text-slate-300 border border-slate-500/30' 
-                : 'bg-blue-50 text-blue-700 border border-blue-200'
+                ? 'bg-slate-700 text-slate-200' 
+                : 'bg-gray-100 text-gray-700'
             }`}>
               {dateRange}
             </div>
             {location && (
-              <div className={`text-sm ${
+              <div className={`flex items-center justify-end gap-1 text-sm ${
                 isDarkMode ? 'text-slate-400' : 'text-gray-600'
               }`}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
                 {location}
               </div>
             )}
@@ -66,32 +73,40 @@ const ResumeCard = ({
         
         {/* Description */}
         <div className="mb-6">
-          <p className={`leading-relaxed text-sm sm:text-base ${
-            isDarkMode ? 'text-slate-300' : 'text-gray-600'
+          <p className={`leading-relaxed ${
+            isDarkMode ? 'text-slate-300' : 'text-gray-700'
           }`}>
             {description}
           </p>
         </div>
         
         {/* Skills */}
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill, index) => (
-            <span
-              key={index}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
-                isDarkMode 
-                  ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/30' 
-                  : 'bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100'
-              }`}
-            >
-              {skill}
-            </span>
-          ))}
+        <div className="space-y-3">
+          <div className={`text-sm font-medium ${
+            isDarkMode ? 'text-slate-400' : 'text-gray-600'
+          }`}>
+            Skills & Technologies
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill, skillIndex) => (
+              <span
+                key={skillIndex}
+                className={`px-3 py-1 rounded-md text-sm ${
+                  isDarkMode 
+                    ? 'bg-slate-700 text-slate-300' 
+                    : 'bg-gray-100 text-gray-700'
+                }`}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
 
 function Experience() {
   const { isDarkMode } = useDarkMode();
@@ -102,16 +117,16 @@ function Experience() {
       title: "Machine Learning Intern",
       company: "Kodiak Sciences Inc.",
       location: "Palo Alto, CA",
-      description: "Developing advanced machine learning models for medical imaging and computer vision applications",
-      skills: ["TensorFlow", "ONNX", "C++", "Computer Vision", "DDPM", "U-Net"]
+      description: "Developing deep learning models for cleaning and segmenting retinal images. Designed robust pupil-tracking algorithm to handle occlusions and reflections during retinal imaging.",
+      skills: ["TensorFlow", "ONNX", "C++", "Computer Vision", "Deep Learning", "OpenCV", "Segmentation"]
     },
     {
       dateRange: "MAY 2022 — AUG. 2024",
       title: "Software Development Intern",
       company: "The Donald Danforth Plant Science Center",
       location: "St. Louis, MO",
-      description: "Built robust software solutions for plant science research, implementing CI/CD pipelines and developing 3D processing algorithms. Created AR/VR applications for data visualization and collaborated on cross-functional research projects.",
-      skills: ["Python", "pytest", "CI/CD", "R", "3D Processing", "AR/VR"]
+      description: "Developed analysis and mesh simplification modules, resolving 150+ code issues via CI/CD best practices. Ensured 100% test coverage with pytest and Codecov.",
+      skills: ["Python", "pytest", "CI/CD", "Codecov", "R", "3D Processing", "AR/VR", "Mesh Simplification"]
     }
   ];
 
@@ -121,6 +136,19 @@ function Experience() {
       <MobileHeader />
       
       <div className="max-w-6xl mx-auto flex flex-col items-center">
+                {/* Profile Image */}
+        <div className="relative mb-12">
+          <div className={`absolute inset-0 rounded-[2.5rem] ${
+          isDarkMode
+            ? 'bg-gradient-to-r from-blue-500 to-indigo-500'
+            : 'bg-gradient-to-r from-blue-500 to-pink-500'
+          } blur-lg opacity-20 scale-110`} />
+          <img 
+            src={profileImage}
+            alt="Profile"
+            className="relative w-[14rem] sm:w-[24rem] h-[14rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto shadow-2xl ring-4 ring-white/10"
+          />
+        </div>
         {/* Section Header */}
         <div className="text-center mb-8">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4 ${
@@ -135,19 +163,7 @@ function Experience() {
           </p>
         </div>
 
-        {/* Profile Image */}
-        <div className="relative mb-12">
-          <div className={`absolute inset-0 rounded-[2.5rem] ${
-          isDarkMode
-            ? 'bg-gradient-to-r from-blue-500 to-indigo-500'
-            : 'bg-gradient-to-r from-blue-500 to-violet-500'
-          } blur-lg opacity-20 scale-110`} />
-          <img 
-            src={profileImage}
-            alt="Profile"
-            className="relative w-[14rem] sm:w-[24rem] h-[24rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto shadow-2xl ring-4 ring-white/10"
-          />
-        </div>
+
 
         {/* Experience Timeline */}
         <div className="w-full max-w-4xl space-y-8 sm:space-y-12">

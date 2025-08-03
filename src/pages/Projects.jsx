@@ -11,7 +11,8 @@ const ProjectCard = ({
   githubLink,
   imageUrl,
   videoUrl,
-  placeDeveloped
+  placeDeveloped,
+  index
 }) => {
   const { isDarkMode } = useDarkMode();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -21,35 +22,47 @@ const ProjectCard = ({
   
   return (
     <div 
-      className={`group relative overflow-hidden rounded-2xl transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl ${hasExpandableContent ? 'cursor-pointer' : ''} ${
+      className={`group relative overflow-hidden rounded-lg transition-all duration-500 ease-out transform hover:scale-[1.02] hover:-translate-y-2 ${hasExpandableContent ? 'cursor-pointer' : ''} ${
         isDarkMode 
-          ? 'bg-gradient-to-br from-slate-800 via-navy/90 to-slate-800 border border-slate-600/30' 
-          : 'bg-gradient-to-br from-white via-gray-50 to-white border border-gray-200/50'
+          ? 'bg-gradient-to-br from-slate-800/90 via-slate-800/70 to-slate-900/90 border border-slate-600/40 hover:border-blue-400/50 shadow-2xl hover:shadow-blue-500/20' 
+          : 'bg-gradient-to-br from-white via-gray-50/80 to-white border border-gray-200/60 hover:border-blue-300/60 shadow-xl hover:shadow-2xl hover:shadow-blue-100/50'
       }`}
+      style={{
+        animationDelay: `${index * 0.2}s`
+      }}
       onClick={hasExpandableContent ? () => setIsExpanded(!isExpanded) : undefined}
     >
+      
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className={`absolute inset-0 ${
+          isDarkMode 
+            ? 'bg-gradient-to-br from-purple-400/10 to-transparent' 
+            : 'bg-gradient-to-br from-purple-500/10 to-transparent'
+        }`} />
+      </div>
       {/* Content Section */}
-      <div className="p-6 sm:p-8">
+      <div className="relative p-8 sm:p-10">
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-8">
           <div className="flex-1">
-            <h3 className={`text-xl sm:text-2xl font-bold mb-2 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
+            <h3 className={`text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-300 group-hover:scale-105 ${
+              isDarkMode ? 'text-white group-hover:text-purple-300' : 'text-gray-900 group-hover:text-purple-700'
             }`}>
               {title}
             </h3>
             {/* Expand indicator - only show if expandable */}
             {hasExpandableContent && (
               <div className="flex items-center gap-2">
-                <span className={`text-sm font-medium ${
-                  isDarkMode ? 'text-slate-400' : 'text-gray-600'
+                <span className={`text-sm font-medium transition-colors duration-300 ${
+                  isDarkMode ? 'text-slate-400 group-hover:text-slate-300' : 'text-gray-600 group-hover:text-gray-700'
                 }`}>
                   {isExpanded ? 'Click to collapse' : 'Click to expand'}
                 </span>
                 <svg 
-                  className={`w-4 h-4 transition-transform duration-300 ${
+                  className={`w-4 h-4 transition-all duration-300 ${
                     isExpanded ? 'rotate-180' : ''
-                  } ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}
+                  } ${isDarkMode ? 'text-slate-400 group-hover:text-slate-300' : 'text-gray-600 group-hover:text-gray-700'}`}
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -59,19 +72,31 @@ const ProjectCard = ({
               </div>
             )}
           </div>
-          {/* Place developed in faint white text */}
+          {/* Place developed badge */}
           {placeDeveloped && (
-            <span className="text-xs font-medium text-white/40 ml-2 whitespace-nowrap">
+            <div className={`inline-flex items-center px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-slate-800/40 text-slate-400 group-hover:text-slate-300' 
+                : 'bg-gray-100/60 text-gray-600 group-hover:text-gray-700'
+            }`}>
+              <svg className="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
               {placeDeveloped}
-            </span>
+            </div>
           )}
         </div>
+        
         {/* Video or Image - only show when expanded and put above description */}
         {isExpanded && (videoUrl ? (
           <div className="mb-6">
             <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden">
               <video 
                 controls 
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="w-full h-auto object-cover transition-all duration-300"
                 onClick={e => e.stopPropagation()}
               >
@@ -92,6 +117,7 @@ const ProjectCard = ({
             </div>
           </div>
         ) : null)}
+        
         {/* Description */}
         <div className="mb-6">
           {hasExpandableContent && isExpanded ? (
@@ -110,20 +136,30 @@ const ProjectCard = ({
             </p>
           )}
         </div>
+        
         {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-6">
+          <div className={`flex items-center gap-2 mb-2 text-sm font-medium ${
+            isDarkMode ? 'text-slate-400' : 'text-gray-600'
+          }`}>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+            <span>Skills & Technologies</span>
+          </div>
+        <div className={`flex flex-wrap gap-2 ${githubLink ? 'mb-10' : 'mb-4'}`}>
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
-                isDarkMode 
-                  ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/30' 
-                  : 'bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100'
-              }`}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5 cursor-default ${
+                  isDarkMode 
+                    ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30 hover:bg-blue-500/25 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20' 
+                    : 'bg-blue-50 text-blue-800 border border-blue-200/60 hover:bg-blue-100 hover:border-blue-300 hover:shadow-md'
+                }`}
             >
               {tech}
             </span>
           ))}
+          
           {/* GitHub button in bottom right */}
           {githubLink && (
             <a 
@@ -131,7 +167,7 @@ const ProjectCard = ({
               target="_blank" 
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()} // Prevent card click when clicking link
-              className={`ml-auto mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm absolute bottom-6 right-6 ${
+              className={`ml-auto mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm absolute bottom-6 right-6 ${
                 isDarkMode 
                   ? 'bg-slate-600/50 text-slate-200 border border-slate-500/30 hover:bg-slate-600 hover:text-white hover:border-slate-400' 
                   : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400'
@@ -154,7 +190,7 @@ function Projects() {
   const projects = [
 
     {
-      title: "Pupil (Eye Tracking)",
+      title: "Eye Tracking",
       shortDescription: "Robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.",
       fullDescription: "• Developed a robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.\n• Implemented multi-threshold segmentation, contour extraction, ellipse regression, and temporal smoothing.\n• Trained a scaled-down SegNet CNN on 550k augmented image-mask pairs for direct pupil segmentation.\n• Benchmarked model performance, reducing localization error 1.9x and increasing speed 1.7x to 60+ FPS",
       technologies: ["OpenCV", "TensorFlow", "ONNX", "Computer Vision", "Lime", "Python", "C++"],
@@ -162,7 +198,7 @@ function Projects() {
       placeDeveloped: "Kodiak Sciences",
     },
     {
-      title: "SLO Vessel Detection",
+      title: "Retina Vessel Detection",
       shortDescription: "Real-time detection of SLO vessels in OCT images using deep learning.",
       fullDescription: "• Developed a deep learning model for real-time detection of SLO vessels in OCT images.\n• Utilized U-Net architecture with data augmentation techniques to improve segmentation accuracy.\n• Achieved state-of-the-art performance on benchmark datasets, significantly reducing false positive rates.",
       technologies: ["TensorFlow", "Keras", "U-Net", "OCT", "Image Segmentation"],
@@ -170,7 +206,7 @@ function Projects() {
     },
 
     {
-      title: "OCT Denoising",
+      title: "Retina Image Denoising",
       shortDescription: "TensorFlow-based pipeline for denoising Optical Coherence Tomography (OCT) images using DDPMs.",
       fullDescription: "• Implemented a TensorFlow-based pipeline for denoising Optical Coherence Tomography (OCT) images using DDPMs.\n• Built a U-Net model with sinusoidal timestep embedding, residual and attention blocks, and group normalization.\n• Trained the model to iteratively remove Gaussian noise and recover clean images from noisy samples.\n• Achieved strong denoising performance and visualized the process at different timesteps.",
       technologies: ["TensorFlow", "Diffusion Models", "U-Net", "OCT", "DDPM", "Image Denoising"],
@@ -184,7 +220,7 @@ function Projects() {
       title: "Monte Carlo Tree Search Parameter Tuning",
       shortDescription: "Cellular automaton-inspired simulation to evolve MCTS agents via self-play in Cribbage pegging.",
       fullDescription: "• Designed a cellular automaton-inspired simulation to evolve MCTS agents via self-play in Cribbage pegging.\n• Incorporated reinforcement learning principles with evolutionary strategies and genetic mutation.\n• Evolved UCT constants, rollout counts, search depths, and backpropagation weights.\n• Leveraged multithreading to parallelize self-play simulations and MCTS rollouts.",
-      technologies: ["Reinforcement Learning", "Evolutionary Strategies", "Genetic Algorithms", "Multithreading", "Cribbage"],
+      technologies: ["Reinforcement Learning", "Evolutionary Strategies", "Genetic Algorithms", "Multithreading"],
       githubLink: "https://github.com/natejly/life",
       videoUrl: "https://portfolionatejly.s3.us-east-2.amazonaws.com/GOLF.mp4",
       placeDeveloped: "School Project",
