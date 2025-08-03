@@ -89,6 +89,21 @@ function ScrollRouter() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Prevent scrolling down when at the top of the page
+  useEffect(() => {
+    const preventScrollDownAtTop = () => {
+      if (window.scrollY <= 0) {
+        window.scrollTo(0, 0);
+      }
+    };
+
+    window.addEventListener('scroll', preventScrollDownAtTop);
+
+    return () => {
+      window.removeEventListener('scroll', preventScrollDownAtTop);
+    };
+  }, []);
+
   return (
     <div className="flex min-h-screen">
       {/* Left Sidebar - Hidden on small screens */}
@@ -216,7 +231,10 @@ function App() {
     <DarkModeProvider>
       <Router>
         <Routes>
-          <Route path="/*" element={<ScrollRouter />} />
+          <Route path="/" element={<ScrollRouter />} />
+          <Route path="/projects" element={<ScrollRouter />} />
+          <Route path="/contact" element={<ScrollRouter />} />
+          <Route path="*" element={<ScrollRouter />} />
         </Routes>
       </Router>
     </DarkModeProvider>
