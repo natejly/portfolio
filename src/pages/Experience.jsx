@@ -17,7 +17,7 @@ const ResumeCard = ({
   return (
     <div className={`group relative overflow-hidden rounded-2xl transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 border border-slate-600/30' 
+        ? 'bg-gradient-to-br from-slate-800 via-navy/90 to-slate-800 border border-slate-600/30' 
         : 'bg-gradient-to-br from-white via-gray-50 to-white border border-gray-200/50'
     }`}>
       
@@ -42,26 +42,25 @@ const ResumeCard = ({
               }`}>
                 {company}
               </h4>
-              {location && (
-                <>
-                  <span className={`${isDarkMode ? 'text-slate-400' : 'text-gray-400'}`}>•</span>
-                  <span className={`text-sm ${
-                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                  }`}>
-                    {location}
-                  </span>
-                </>
-              )}
             </div>
           </div>
           
-          {/* Date Range Badge */}
-          <div className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
-            isDarkMode 
-              ? 'bg-slate-600/50 text-slate-300 border border-slate-500/30' 
-              : 'bg-blue-50 text-blue-700 border border-blue-200'
-          }`}>
-            {dateRange}
+          {/* Date Range and Location */}
+          <div className="text-right">
+            <div className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap mb-2 ${
+              isDarkMode 
+                ? 'bg-slate-600/50 text-slate-300 border border-slate-500/30' 
+                : 'bg-blue-50 text-blue-700 border border-blue-200'
+            }`}>
+              {dateRange}
+            </div>
+            {location && (
+              <div className={`text-sm ${
+                isDarkMode ? 'text-slate-400' : 'text-gray-600'
+              }`}>
+                {location}
+              </div>
+            )}
           </div>
         </div>
         

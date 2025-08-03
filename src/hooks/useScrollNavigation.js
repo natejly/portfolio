@@ -4,39 +4,57 @@ export const useScrollNavigation = () => {
   const [activeSection, setActiveSection] = useState('/');
 
   const handleScroll = useCallback(() => {
-    const scrollPosition = window.scrollY;
-    const viewportHeight = window.innerHeight;
-    const halfViewport = viewportHeight / 2;
-
     const experienceElement = document.getElementById('experience');
     const projectsElement = document.getElementById('projects');
     const contactElement = document.getElementById('contact');
 
-    if (experienceElement && projectsElement && contactElement) {
-      const experienceTop = experienceElement.offsetTop;
-      const projectsTop = projectsElement.offsetTop;
-      const contactTop = contactElement.offsetTop;
-
-      let newSection = '/';
-
-      // Check which section is most visible in the viewport
-      if (scrollPosition + halfViewport >= contactTop) {
-        newSection = '/contact';
-      } else if (scrollPosition + halfViewport >= projectsTop) {
-        newSection = '/projects';
-      } else {
-        // If we're above projects section, we're in experience
-        newSection = '/';
-      }
-
-      setActiveSection(prevSection => {
-        if (newSection !== prevSection) {
-          window.history.replaceState({}, '', newSection);
-          return newSection;
-        }
-        return prevSection;
+    if (!experienceElement || !projectsElement || !contactElement) {
+      console.warn('One or more section elements not found:', {
+        experienceElement,
+        projectsElement,
+        contactElement
       });
+      return;
     }
+
+    const sections = [
+      { name: '/', el: experienceElement },
+      { name: '/projects', el: projectsElement },
+      { name: '/contact', el: contactElement }
+    ];
+
+    const viewportHeight = window.innerHeight;
+    let newSection = '/';
+    let maxVisible = 0;
+
+    // Use a threshold for visibility (e.g., at least 30% of section visible)
+    const threshold = 0.3;
+    sections.forEach(section => {
+      const rect = section.el.getBoundingClientRect();
+      const sectionHeight = rect.height || section.el.offsetHeight;
+      const visible = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+      const visibleRatio = sectionHeight ? visible / sectionHeight : 0;
+      if (visibleRatio > threshold && visible > maxVisible) {
+        maxVisible = visible;
+        newSection = section.name;
+      }
+    });
+
+    // Debug logging for section visibility
+    console.log('Section visibility:', sections.map(s => ({
+      name: s.name,
+      rect: s.el.getBoundingClientRect(),
+      visible: Math.max(0, Math.min(s.el.getBoundingClientRect().bottom, viewportHeight) - Math.max(s.el.getBoundingClientRect().top, 0))
+    })));
+    console.log('Section changed to:', newSection);
+
+    setActiveSection(prevSection => {
+      if (newSection !== prevSection) {
+        window.history.replaceState({}, '', newSection);
+        return newSection;
+      }
+      return prevSection;
+    });
   }, []);
 
   useEffect(() => {
@@ -52,11 +70,12 @@ export const useScrollNavigation = () => {
       }
     };
 
-    // Add event listener with passive option for better performance
     window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-    
-    // Initial check
-    handleScroll();
+
+    // Initial check after DOM is ready
+    setTimeout(() => {
+      handleScroll();
+    }, 100);
 
     return () => {
       window.removeEventListener('scroll', throttledHandleScroll);
