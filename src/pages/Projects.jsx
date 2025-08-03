@@ -158,7 +158,7 @@ function Projects() {
       shortDescription: "Robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.",
       fullDescription: "• Developed a robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.\n• Implemented multi-threshold segmentation, contour extraction, ellipse regression, and temporal smoothing.\n• Trained a scaled-down SegNet CNN on 550k augmented image-mask pairs for direct pupil segmentation.\n• Benchmarked model performance, reducing localization error 1.9x and increasing speed 1.7x to 60+ FPS",
       technologies: ["OpenCV", "TensorFlow", "ONNX", "Computer Vision", "Lime", "Python", "C++"],
-      videoUrl: import.meta.env.VITE_VIDEO_PUPIL,
+      videoUrl: "https://portfolionatejly.s3.us-east-2.amazonaws.com/TrackingCompilation.mp4",
       placeDeveloped: "Kodiak Sciences",
     },
     {
@@ -186,7 +186,7 @@ function Projects() {
       fullDescription: "• Designed a cellular automaton-inspired simulation to evolve MCTS agents via self-play in Cribbage pegging.\n• Incorporated reinforcement learning principles with evolutionary strategies and genetic mutation.\n• Evolved UCT constants, rollout counts, search depths, and backpropagation weights.\n• Leveraged multithreading to parallelize self-play simulations and MCTS rollouts.",
       technologies: ["Reinforcement Learning", "Evolutionary Strategies", "Genetic Algorithms", "Multithreading", "Cribbage"],
       githubLink: "https://github.com/natejly/life",
-      videoUrl: import.meta.env.VITE_VIDEO_MCTS,
+      videoUrl: "https://portfolionatejly.s3.us-east-2.amazonaws.com/GOLF.mp4",
       placeDeveloped: "School Project",
     },
     {
