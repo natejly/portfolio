@@ -1,6 +1,7 @@
 import React from 'react';
 import profileImage from '../assets/LyProfile-2.jpg';
 import { useDarkMode } from '../context/DarkModeContext';
+import MobileHeader from '../components/MobileHeader';
 
 // Resume Card Component
 const ResumeCard = ({ 
@@ -90,6 +91,9 @@ function Experience() {
 
   return (
     <section id="experience" className="min-h-screen p-6 pt-20">
+      {/* Mobile Header - only visible on small screens */}
+      <MobileHeader />
+      
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Profile Image */}
         <img 

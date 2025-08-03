@@ -28,6 +28,14 @@ function ScrollRouter() {
       ref?.current?.scrollIntoView({ behavior: 'smooth' })
     }
 
+    // On refresh, always go to base page first
+    if (path !== '/') {
+      window.history.replaceState({}, '', '/')
+      setActiveSection('/')
+      scrollTo(homeRef)
+      return
+    }
+
     switch (path) {
       case '/':
         scrollTo(homeRef)
