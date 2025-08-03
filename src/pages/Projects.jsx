@@ -1,8 +1,17 @@
+import React from 'react';
+import { useDarkMode } from '../context/DarkModeContext';
+
 function P1() {
+  const { isDarkMode } = useDarkMode();
+  
   return (
     <section id="projects" className="min-h-screen p-16 flex flex-col justify-center max-w-[1200px] mx-auto">
       <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 mt-8">
-        <div className="bg-cream rounded-2xl p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_25px_-5px_rgba(19,41,75,0.15)] hover:bg-white">
+        <div className={`border rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_25px_-5px_rgba(19,41,75,0.15)] ${
+          isDarkMode 
+            ? 'bg-cream border-cream/30 hover:bg-white text-navy' 
+            : 'bg-cream border-navy/30 hover:bg-white text-navy'
+        }`}>
           <h3 className="text-xl font-semibold mb-4 text-navy">Project</h3>
           <p className="text-navy/80 mb-6">
             Desc
@@ -19,7 +28,11 @@ function P1() {
 
         
 
-        <div className="bg-cream rounded-2xl p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_25px_-5px_rgba(19,41,75,0.15)] hover:bg-white">
+        <div className={`border rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_25px_-5px_rgba(19,41,75,0.15)] ${
+          isDarkMode 
+            ? 'bg-cream border-cream/30 hover:bg-white text-navy' 
+            : 'bg-cream border-navy/30 hover:bg-white text-navy'
+        }`}>
           <h3 className="text-xl font-semibold mb-4 text-navy">other project</h3>
           <p className="text-navy/80 mb-6">
             desc here

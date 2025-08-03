@@ -31,15 +31,30 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all 0.12s ease;
-  color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
 }
 
-/* Active navigation states */
-.active .nav-text,
-nav a:hover .nav-text {
+/* Light mode navigation */
+.light-mode .nav-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.light-mode .active .nav-text,
+.light-mode nav a:hover .nav-text {
   font-size: 1.5rem;
   color: #000000;
+  font-weight: 800;
+}
+
+/* Dark mode navigation */
+.dark-mode .nav-text {
+  color: rgba(245, 245, 220, 0.6); /* cream with opacity */
+}
+
+.dark-mode .active .nav-text,
+.dark-mode nav a:hover .nav-text {
+  font-size: 1.5rem;
+  color: #F5F5DC; /* cream */
   font-weight: 800;
 }
 
