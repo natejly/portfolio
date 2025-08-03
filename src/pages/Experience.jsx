@@ -11,22 +11,26 @@ const ResumeCard = ({
   skills
 }) => {
   return (
-    <div className="bg-cream text-navy shadow-xl rounded-2xl p-6 max-w-2xl mx-auto transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl border border-navy/20">
+    <div className="bg-cream text-navy rounded-2xl p-6 w-full max-w-2xl mx-auto transition-transform duration-200 ease-out hover:scale-[1.01] hover:shadow-2xl h-64 flex flex-col">
       {/* Header Section */}
-      <div className="flex flex-col lg:flex-row lg:items-start gap-4 mb-6">
-        {/* Date Range */}
-        <div className="text-navy/70 text-sm font-medium tracking-wide uppercase min-w-fit">
-          {dateRange}
+      <div className="flex justify-between items-start gap-4 mb-6">
+        {/* Title and Company */}
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base lg:text-lg font-semibold text-navy mb-1 truncate">
+            {title}
+          </h3>
+          <p className="text-navy/70 text-sm truncate">
+            {company}
+          </p>
         </div>
         
-        {/* Title, Company, and Location */}
-        <div className="flex-1">
-          <h3 className="text-lg lg:text-xl font-semibold text-navy mb-1">
-            {title} · {company}
-            <span className="ml-2 text-blue">↗</span>
-          </h3>
+        {/* Date Range and Location */}
+        <div className="text-right flex-shrink-0">
+          <div className="text-navy/70 text-sm font-medium tracking-wide uppercase whitespace-nowrap">
+            {dateRange}
+          </div>
           {location && (
-            <p className="text-navy/70 text-sm mb-2">
+            <p className="text-navy/70 text-sm mt-1 whitespace-nowrap">
               {location}
             </p>
           )}
@@ -34,18 +38,18 @@ const ResumeCard = ({
       </div>
       
       {/* Description */}
-      <div className="mb-6">
-        <p className="text-navy/80 leading-relaxed text-base">
+      <div className="mb-4 flex-1">
+        <p className="text-navy/80 leading-relaxed text-base line-clamp-3">
           {description}
         </p>
       </div>
       
       {/* Skills Tags */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mt-auto">
         {skills.map((skill, index) => (
           <span
             key={index}
-            className="bg-navy text-cream px-3 py-1 rounded-full text-sm font-medium hover:bg-blue transition-colors duration-200"
+            className="bg-navy text-cream px-3 py-1 rounded-full text-sm font-medium hover:bg-blue transition-colors duration-150"
           >
             {skill}
           </span>
@@ -76,7 +80,7 @@ function Experience() {
   ];
 
   return (
-    <section id="about" className="min-h-screen p-6 pt-20">
+    <section id="experience" className="min-h-screen p-6 pt-20">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Profile Image */}
         <img 
