@@ -36,7 +36,11 @@ function ScrollRouter() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className={`flex min-h-screen transition-colors duration-300 ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' 
+        : 'bg-gradient-to-br from-gray-50 via-white to-gray-50'
+    }`}>
       {/* Left Sidebar - Hidden on small screens */}
       <Sidebar 
         activeSection={activeSection} 
@@ -44,9 +48,7 @@ function ScrollRouter() {
       />
 
       {/* Right Content Area */}
-      <div className={`w-full min-h-screen lg:ml-[40vw] lg:w-[60vw] transition-colors duration-300 relative ${
-        isDarkMode ? 'bg-navy' : 'bg-white'
-      }`}>
+      <div className="w-full min-h-screen lg:ml-[40vw] lg:w-[60vw] transition-colors duration-300 relative bg-transparent">
         <div className="max-w-4xl mx-auto px-4 sm:px-8 py-6 sm:py-12">
           <DarkModeToggle />
           
