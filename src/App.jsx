@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Analytics } from '@vercel/analytics/next';
 
 // Pages
 import Experience from './pages/Experience';
@@ -57,7 +56,6 @@ function ScrollRouter() {
           <Experience />
           <Projects />
           <Personal />
-          <Analytics />
         </div>
       </div>
     </div>
