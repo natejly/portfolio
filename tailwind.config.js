@@ -1,9 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+import { defineConfig } from '@tailwindcss/vite'
+
+export default defineConfig({
   theme: {
     extend: {
       colors: {
@@ -16,5 +13,4 @@ module.exports = {
       },
     },
   },
-  plugins: [],
-};
+})
