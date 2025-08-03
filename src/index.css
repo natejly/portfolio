@@ -15,7 +15,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Disable overscroll for html and body */
+/* Disable overscroll and smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 html, body {
   overscroll-behavior: none;
   overflow-x: hidden;
@@ -25,10 +31,17 @@ html, body {
   background-color: #ffffff; /* Default to white */
 }
 
+/* Hide scrollbar for webkit browsers */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 /* Ensure root container takes full height */
 #root {
   height: 100vh;
   overscroll-behavior: none;
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: light) {
