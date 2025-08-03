@@ -1,86 +1,52 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
+/**
+ * Track the section currently visible in the viewport and update the
+ * browser URL so the sidebar can highlight the active link. The previous
+ * implementation relied on manual scroll calculations which proved
+ * unreliable, leaving the navigation stuck on the first section. This
+ * version uses the built-in IntersectionObserver API for accurate
+ * visibility detection.
+ */
 export const useScrollNavigation = () => {
   const [activeSection, setActiveSection] = useState('/');
 
-  const handleScroll = useCallback(() => {
-    const experienceElement = document.getElementById('experience');
-    const projectsElement = document.getElementById('projects');
-    const contactElement = document.getElementById('contact');
-
-    if (!experienceElement || !projectsElement || !contactElement) {
-      console.warn('One or more section elements not found:', {
-        experienceElement,
-        projectsElement,
-        contactElement
-      });
-      return;
-    }
-
-    const sections = [
-      { name: '/', el: experienceElement },
-      { name: '/projects', el: projectsElement },
-      { name: '/contact', el: contactElement }
-    ];
-
-    const viewportHeight = window.innerHeight;
-    let newSection = '/';
-    let maxVisible = 0;
-
-    // Use a threshold for visibility (e.g., at least 30% of section visible)
-    const threshold = 0.3;
-    sections.forEach(section => {
-      const rect = section.el.getBoundingClientRect();
-      const sectionHeight = rect.height || section.el.offsetHeight;
-      const visible = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
-      const visibleRatio = sectionHeight ? visible / sectionHeight : 0;
-      if (visibleRatio > threshold && visible > maxVisible) {
-        maxVisible = visible;
-        newSection = section.name;
-      }
-    });
-
-    // Debug logging for section visibility
-    console.log('Section visibility:', sections.map(s => ({
-      name: s.name,
-      rect: s.el.getBoundingClientRect(),
-      visible: Math.max(0, Math.min(s.el.getBoundingClientRect().bottom, viewportHeight) - Math.max(s.el.getBoundingClientRect().top, 0))
-    })));
-    console.log('Section changed to:', newSection);
-
-    setActiveSection(prevSection => {
-      if (newSection !== prevSection) {
-        window.history.replaceState({}, '', newSection);
-        return newSection;
-      }
-      return prevSection;
-    });
-  }, []);
-
   useEffect(() => {
-    let ticking = false;
+    const sectionIds = ['experience', 'projects', 'contact'];
+    const pathMap = {
+      experience: '/',
+      projects: '/projects',
+      contact: '/contact'
+    };
 
-    const throttledHandleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
+    const sections = sectionIds
+      .map(id => ({ id, el: document.getElementById(id) }))
+      .filter(s => s.el);
+
+    if (sections.length === 0) return undefined;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const newSection = pathMap[entry.target.id];
+            setActiveSection(prev => {
+              if (prev !== newSection) {
+                window.history.replaceState({}, '', newSection);
+                return newSection;
+              }
+              return prev;
+            });
+          }
         });
-        ticking = true;
-      }
-    };
+      },
+      { threshold: 0.3 }
+    );
 
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    sections.forEach(({ el }) => observer.observe(el));
 
-    // Initial check after DOM is ready
-    setTimeout(() => {
-      handleScroll();
-    }, 100);
-
-    return () => {
-      window.removeEventListener('scroll', throttledHandleScroll);
-    };
-  }, [handleScroll]);
+    return () => observer.disconnect();
+  }, []);
 
   return { activeSection, setActiveSection };
 };
