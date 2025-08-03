@@ -15,10 +15,10 @@ const ResumeCard = ({
   const { isDarkMode } = useDarkMode();
   
   return (
-    <div className={`group relative overflow-hidden rounded-2xl transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl ${
+    <div className={`relative overflow-hidden rounded-2xl transition-colors duration-200 ease-out ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-800 via-navy/90 to-slate-800 border border-slate-600/30' 
-        : 'bg-gradient-to-br from-white via-gray-50 to-white border border-gray-200/50'
+        ? 'bg-gradient-to-br from-slate-800 via-navy/90 to-slate-800 border border-slate-600/30 hover:bg-slate-700/80' 
+        : 'bg-gradient-to-br from-white via-gray-50 to-white border border-gray-200/50 hover:bg-gray-100'
     }`}>
       
       {/* Timeline Indicator */}
@@ -138,14 +138,14 @@ function Experience() {
         {/* Profile Image */}
         <div className="relative mb-12">
           <div className={`absolute inset-0 rounded-[2.5rem] ${
-            isDarkMode 
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600' 
-              : 'bg-gradient-to-r from-blue-500 to-indigo-600'
+          isDarkMode
+            ? 'bg-gradient-to-r from-blue-500 to-indigo-500'
+            : 'bg-gradient-to-r from-blue-500 to-violet-500'
           } blur-lg opacity-20 scale-110`} />
           <img 
-            src={profileImage} 
-            alt="Profile" 
-            className="relative w-[10rem] sm:w-[12rem] h-[10rem] sm:h-[12rem] object-cover rounded-[2rem] mx-auto shadow-2xl ring-4 ring-white/10"
+            src={profileImage}
+            alt="Profile"
+            className="relative w-[14rem] sm:w-[24rem] h-[24rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto shadow-2xl ring-4 ring-white/10"
           />
         </div>
 
@@ -177,10 +177,10 @@ function Experience() {
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-200 ${
+          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md transition-all duration-200 ${
             isDarkMode 
-              ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-600/25' 
-              : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/25'
+              ? 'bg-blue-600 text-white hover:bg-blue-500' 
+              : 'bg-blue-600 text-white hover:bg-blue-700'
           }`}>
             <span className="font-medium">View Full Resume</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
