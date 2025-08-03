@@ -14,7 +14,6 @@
     "@aws-sdk/s3-request-presigner": "^3.859.0",
     "@tailwindcss/vite": "^4.1.11",
     "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "react": "^19.1.0",
