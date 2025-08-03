@@ -51,7 +51,7 @@ function ScrollRouter() {
   // Handle scroll-based navigation detection
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3
+      const scrollPosition = window.scrollY + window.innerHeight / 2
 
       const experienceElement = document.getElementById('experience')
       const projectsElement = document.getElementById('projects')
@@ -64,13 +64,13 @@ function ScrollRouter() {
 
         if (scrollPosition >= contactTop) {
           setActiveSection('/contact')
-          window.history.replaceState({}, '', '#contact')
+          window.history.replaceState({}, '', '/contact')
         } else if (scrollPosition >= projectsTop) {
           setActiveSection('/projects')
-          window.history.replaceState({}, '', '#projects')
+          window.history.replaceState({}, '', '/projects')
         } else {
           setActiveSection('/')
-          window.history.replaceState({}, '', '#experience')
+          window.history.replaceState({}, '', '/')
         }
       }
     }
