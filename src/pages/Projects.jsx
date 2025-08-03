@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useDarkMode } from '../context/DarkModeContext';
 
 // Project Card Component
-const ProjectCard = ({ 
+const ProjectCard = ({
   title,
   shortDescription,
   fullDescription,
   technologies,
   githubLink,
-  liveLink,
   imageUrl
 }) => {
   const { isDarkMode } = useDarkMode();
@@ -131,7 +130,6 @@ function Projects() {
       shortDescription: "A modern React portfolio with dark mode and smooth navigation.",
       technologies: ["React", "Tailwind CSS", "Vite", "JavaScript", "Vercel"],
       githubLink: "https://github.com/natejly/portfolio",
-      liveLink: "https://your-portfolio.com",
     },
     {
       title: "Machine Learning Vision System",
@@ -140,7 +138,6 @@ function Projects() {
       technologies: ["TensorFlow", "ONNX", "C++", "Python", "Computer Vision", "DDPM", "U-Net"],
       githubLink: "https://github.com/natejly/ml-vision",
       imageUrl: "https://picsum.photos/536/354", // Replace with actual image URL
-      liveLink: null,
     },
   ];
 
