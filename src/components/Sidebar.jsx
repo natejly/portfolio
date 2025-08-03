@@ -29,14 +29,16 @@ const Sidebar = ({ activeSection, onNavigate }) => {
   };
 
   return (
-    <div className={`fixed left-0 top-0 w-[40vw] h-screen p-12 flex flex-col hidden lg:flex transition-colors duration-300 ${
-      isDarkMode ? 'bg-navy text-cream dark-mode' : 'bg-white text-black light-mode'
+    <div className={`fixed left-0 top-0 w-[40vw] h-screen p-12 flex flex-col hidden lg:flex transition-all duration-300 backdrop-blur-sm ${
+      isDarkMode 
+        ? 'bg-transparent text-white' 
+        : 'bg-white/80 text-gray-900'
     }`}>
       {/* Profile Section */}
       <div className="text-left profile-section">
         <h1>Nate Ly</h1>
         <p className={`text-base leading-snug ${
-          isDarkMode ? 'text-cream/60' : 'text-black/60'
+          isDarkMode ? 'text-slate-400' : 'text-gray-600'
         }`}>
           I'm passionate about building intelligent systems that solve real-world problems
         </p>
@@ -67,24 +69,24 @@ const Sidebar = ({ activeSection, onNavigate }) => {
           url="https://github.com/natejly" 
           style={socialIconSize}
           className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#F5F5DC" : "#000000"}
-          fgColor={isDarkMode ? "#13294B" : "#ffffff"}
+          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          fgColor="#ffffff"
           target="_blank"
         />
         <SocialIcon 
           url="https://www.linkedin.com/in/natejly/" 
           style={socialIconSize}
           className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#F5F5DC" : "#000000"}
-          fgColor={isDarkMode ? "#13294B" : "#ffffff"}
+          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          fgColor="#ffffff"
           target="_blank"
         />
         <SocialIcon 
           url="https://instagram.com/natejly" 
           style={socialIconSize}
           className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#F5F5DC" : "#000000"}
-          fgColor={isDarkMode ? "#13294B" : "#ffffff"}
+          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          fgColor="#ffffff"
           target="_blank"
         />
       </div>
