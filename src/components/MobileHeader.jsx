@@ -13,7 +13,7 @@ const MobileHeader = () => {
         : 'bg-white/80 text-gray-900 light-mode'
     }`}>
       {/* Name and Description */}
-      <div className="text-left profile-section mb-6">
+      <div className="text-center profile-section mb-6">
         <h1 className="text-4xl font-bold mb-2">Nate Ly</h1>
         <p className={`text-base leading-snug ${
           isDarkMode ? 'text-slate-400' : 'text-gray-600'
@@ -23,7 +23,7 @@ const MobileHeader = () => {
       </div>
 
       {/* Social Media Icons */}
-      <div className="flex items-center gap-[1rem] mb-6" aria-label="Social media">
+      <div className="flex items-center justify-center gap-[1rem] mb-6" aria-label="Social media">
         <SocialIcon 
           url="https://github.com/natejly" 
           style={socialIconSize}
