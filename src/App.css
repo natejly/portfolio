@@ -29,12 +29,12 @@
 .profile-section p {
   margin: 0.5rem 0 0 0 !important;
   padding: 0 !important;
-  margin-bottom: 08rem !important;
+  margin-bottom: 0.8rem !important;
 }
 
 /* Navigation Styles */
 .nav-text {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -46,7 +46,7 @@
 /* Active navigation states */
 .active .nav-text,
 nav a:hover .nav-text {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #000000;
   font-weight: 800;
 }

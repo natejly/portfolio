@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-
+import { SocialIcon } from 'react-social-icons'
 import Home from './pages/About'
 import P1 from './pages/Projects'
 import P2 from './pages/Personal'
@@ -13,6 +13,9 @@ function ScrollRouter() {
   const homeRef = useRef(null)
   const p1Ref = useRef(null)
   const p2Ref = useRef(null)
+
+  // Social icon size variable
+  const socialIconSize = { height: 36, width: 36 }
 
   // Handle URL navigation
   useEffect(() => {
@@ -77,21 +80,23 @@ function ScrollRouter() {
   return (
     <div className="flex min-h-screen lg:flex-col">
       {/* Left Sidebar - Hidden on small screens */}
-      <div className="fixed left-[15vw] top-[5vh] w-[20vw] h-[90vh] bg-white text-black p-12 lg:hidden">
+      <div className="fixed left-[15vw] top-[10vh] w-[25vw] h-[90vh] bg-white text-black p-12 flex flex-col lg:hidden">
         <div className="text-left profile-section">
           <h1>
             Nate Ly
           </h1>
-          <h2 className="text-[20px] text-black/70 font-bold">
-            CS Student
+          <h2 className="text-[20px] p-[0rem] text-black/70 font-bold">
+            Junior at Yale 
           </h2>
+          
           <p className="text-base text-black/60 leading-snug">
-            someone employ me please
+            Passionate about building intelligent systems that solve real-world problems
           </p>
+
         </div>
 
-        <nav className="text-left mt-8" aria-label="In-page jump links">
-          <ul className="w-max list-none text-left">
+        <nav className="mt-[3rem]" aria-label="In-page jump links">
+          <ul className="list-none p-0 m-0">
             <li>
               <a 
                 href="#about" 
@@ -139,6 +144,34 @@ function ScrollRouter() {
             </li>
           </ul>
         </nav>
+
+        {/* Social media icons */}
+        <div className="mt-auto mb-[4rem] flex items-center gap-[1rem]" aria-label="Social media">
+          <SocialIcon 
+            url="https://github.com/natejly" 
+            style={socialIconSize}
+            className="transition-transform duration-200 hover:scale-125"
+            bgColor="#000000"
+            fgColor="#ffffff"
+            target="_blank"
+          />
+          <SocialIcon 
+            url="https://www.linkedin.com/in/natejly/" 
+            style={socialIconSize}
+            className="transition-transform duration-200 hover:scale-125"
+            bgColor="#000000"
+            fgColor="#ffffff"
+            target="_blank"
+          />
+          <SocialIcon 
+            url="https://instagram.com/natejly" 
+            style={socialIconSize}
+            className="transition-transform duration-200 hover:scale-125"
+            bgColor="#000000"
+            fgColor="#ffffff"
+            target="_blank"
+          />
+        </div>
       </div>
 
       {/* Right Content Area */}
