@@ -1,5 +1,6 @@
 import React from 'react';
 import profileImage from '../assets/LyProfile-2.jpg';
+import { useDarkMode } from '../context/DarkModeContext';
 
 // Resume Card Component
 const ResumeCard = ({ 
@@ -10,8 +11,14 @@ const ResumeCard = ({
   description,
   skills
 }) => {
+  const { isDarkMode } = useDarkMode();
+  
   return (
-    <div className="bg-cream text-navy rounded-2xl p-6 w-full max-w-2xl mx-auto transition-transform duration-200 ease-out hover:scale-[1.01] hover:shadow-2xl h-64 flex flex-col">
+    <div className={`border rounded-xl p-6 w-full max-w-2xl mx-auto transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-2xl h-64 flex flex-col ${
+      isDarkMode 
+        ? 'bg-cream text-navy border-cream/30 hover:bg-white' 
+        : 'bg-cream text-navy border-navy/30 hover:bg-white'
+    }`}>
       {/* Header Section */}
       <div className="flex justify-between items-start gap-4 mb-6">
         {/* Title and Company */}
@@ -60,6 +67,8 @@ const ResumeCard = ({
 };
 
 function Experience() {
+  const { isDarkMode } = useDarkMode();
+  
   const experiences = [
     {
       dateRange: "JUN. 2025 — AUG. 2025",
