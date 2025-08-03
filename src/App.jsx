@@ -28,14 +28,6 @@ function ScrollRouter() {
       ref?.current?.scrollIntoView({ behavior: 'smooth' })
     }
 
-    // On refresh, always go to base page first
-    if (path !== '/') {
-      window.history.replaceState({}, '', '/')
-      setActiveSection('/')
-      scrollTo(homeRef)
-      return
-    }
-
     switch (path) {
       case '/':
         scrollTo(homeRef)
@@ -50,6 +42,10 @@ function ScrollRouter() {
         setActiveSection('/contact')
         break
       default:
+        // For any unknown route, go to home
+        window.history.replaceState({}, '', '/')
+        setActiveSection('/')
+        scrollTo(homeRef)
         break
     }
   }, [location])
@@ -198,7 +194,7 @@ function ScrollRouter() {
     <div className={`w-full min-h-screen lg:ml-[40vw] lg:w-[60vw] transition-colors duration-300 relative ${
       isDarkMode ? 'bg-navy' : 'bg-white'
     }`}>
-        <div className="max-w-4xl mx-auto px-8 py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 py-6 sm:py-12">
           <DarkModeToggle />
           <div ref={homeRef}>
             <Home />

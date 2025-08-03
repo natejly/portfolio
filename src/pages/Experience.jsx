@@ -15,16 +15,16 @@ const ResumeCard = ({
   const { isDarkMode } = useDarkMode();
   
   return (
-    <div className={`border rounded-xl p-6 w-full max-w-2xl mx-auto transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-2xl h-64 flex flex-col ${
+    <div className={`border rounded-xl p-4 sm:p-6 w-full max-w-2xl mx-auto transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-2xl h-auto sm:h-64 flex flex-col ${
       isDarkMode 
         ? 'bg-cream text-navy border-cream/30 hover:bg-white' 
         : 'bg-cream text-navy border-navy/30 hover:bg-white'
     }`}>
       {/* Header Section */}
-      <div className="flex justify-between items-start gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 mb-4 sm:mb-6">
         {/* Title and Company */}
         <div className="flex-1 min-w-0">
-          <h3 className="text-base lg:text-lg font-semibold text-navy mb-1 truncate">
+          <h3 className="text-lg sm:text-base lg:text-lg font-semibold text-navy mb-1 truncate">
             {title}
           </h3>
           <p className="text-navy/70 text-sm truncate">
@@ -33,7 +33,7 @@ const ResumeCard = ({
         </div>
         
         {/* Date Range and Location */}
-        <div className="text-right flex-shrink-0">
+        <div className="text-left sm:text-right flex-shrink-0">
           <div className="text-navy/70 text-sm font-medium tracking-wide uppercase whitespace-nowrap">
             {dateRange}
           </div>
@@ -47,7 +47,7 @@ const ResumeCard = ({
       
       {/* Description */}
       <div className="mb-4 flex-1">
-        <p className="text-navy/80 leading-relaxed text-base line-clamp-3">
+        <p className="text-navy/80 leading-relaxed text-sm sm:text-base line-clamp-3">
           {description}
         </p>
       </div>
@@ -57,7 +57,7 @@ const ResumeCard = ({
         {skills.map((skill, index) => (
           <span
             key={index}
-            className="bg-navy text-cream px-3 py-1 rounded-full text-sm font-medium hover:bg-blue transition-colors duration-150"
+            className="bg-navy text-cream px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium hover:bg-blue transition-colors duration-150"
           >
             {skill}
           </span>
@@ -90,7 +90,7 @@ function Experience() {
   ];
 
   return (
-    <section id="experience" className="min-h-screen p-6 pt-20">
+    <section id="experience" className="min-h-screen p-4 sm:p-6 pt-20">
       {/* Mobile Header - only visible on small screens */}
       <MobileHeader />
       
@@ -99,11 +99,11 @@ function Experience() {
         <img 
           src={profileImage} 
           alt="Profile" 
-          className="w-[12rem] h-[12rem] object-cover rounded-[2rem] mx-auto mb-8 shadow-lg"
+          className="w-[10rem] sm:w-[12rem] h-[10rem] sm:h-[12rem] object-cover rounded-[2rem] mx-auto mb-6 sm:mb-8 shadow-lg"
         />
 
         {/* Resume Cards */}
-        <div className="w-full max-w-3xl flex flex-col gap-6">
+        <div className="w-full max-w-3xl flex flex-col gap-4 sm:gap-6">
           {experiences.map((experience, index) => (
             <ResumeCard key={index} {...experience} />
           ))}
