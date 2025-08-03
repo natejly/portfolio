@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next';
 
 // Pages
@@ -58,7 +57,6 @@ function ScrollRouter() {
           <Experience />
           <Projects />
           <Personal />
-          <SpeedInsights />
           <Analytics />
         </div>
       </div>
