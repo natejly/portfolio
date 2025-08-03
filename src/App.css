@@ -1,17 +1,11 @@
-/* Global body styling - remove conflicting Tailwind imports */
+/* Global body styling */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
-  
 }
-/* html, body {
-  overscroll-behavior: none;
-  overflow-x: hidden;
-} */
+
 /* Hide scrollbars */
-
-
 ::-webkit-scrollbar {
   display: none;
 }
