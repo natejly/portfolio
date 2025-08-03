@@ -34,7 +34,7 @@ const ResumeCard = ({
         
         {/* Date Range and Location */}
         <div className="text-left sm:text-right flex-shrink-0">
-          <div className="text-navy/70 text-sm font-medium tracking-wide uppercase whitespace-nowrap">
+          <div className="hidden sm:block text-navy/70 text-sm font-medium tracking-wide uppercase whitespace-nowrap">
             {dateRange}
           </div>
           {location && (
