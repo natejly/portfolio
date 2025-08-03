@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { SocialIcon } from 'react-social-icons'
-import Home from './pages/About'
+import Home from './pages/Experience'
 import P1 from './pages/Projects'
 import P2 from './pages/Personal'
 
@@ -43,17 +43,22 @@ function ScrollRouter() {
     }
   }, [location])
 
+  // Scroll to top on initial load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   // Handle scroll-based navigation detection
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 3
 
-      const aboutElement = document.getElementById('about')
+      const experienceElement = document.getElementById('experience')
       const projectsElement = document.getElementById('projects')
       const contactElement = document.getElementById('contact')
 
-      if (aboutElement && projectsElement && contactElement) {
-        const aboutTop = aboutElement.offsetTop
+      if (experienceElement && projectsElement && contactElement) {
+        const experienceTop = experienceElement.offsetTop
         const projectsTop = projectsElement.offsetTop
         const contactTop = contactElement.offsetTop
 
@@ -65,7 +70,7 @@ function ScrollRouter() {
           window.history.replaceState({}, '', '#projects')
         } else {
           setActiveSection('/')
-          window.history.replaceState({}, '', '#about')
+          window.history.replaceState({}, '', '#experience')
         }
       }
     }
@@ -78,19 +83,19 @@ function ScrollRouter() {
   }, [])
 
   return (
-    <div className="flex min-h-screen lg:flex-col">
+    <div className="flex min-h-screen">
       {/* Left Sidebar - Hidden on small screens */}
-      <div className="fixed left-[15vw] top-[10vh] w-[25vw] h-[90vh] bg-white text-black p-12 flex flex-col lg:hidden">
+      <div className="fixed left-0 top-0 w-[40vw] h-screen bg-white text-black p-12 flex flex-col hidden lg:flex">
         <div className="text-left profile-section">
           <h1>
             Nate Ly
           </h1>
-          <h2 className="text-[20px] p-[0rem] text-black/70 font-bold">
+          {/* <h2 className="text-[20px] p-[0rem] text-black/70 font-bold">
             Junior at Yale 
-          </h2>
+          </h2> */}
           
           <p className="text-base text-black/60 leading-snug">
-            Passionate about building intelligent systems that solve real-world problems
+            I'm passionate experience building intelligent systems that solve real-world problems
           </p>
 
         </div>
@@ -99,17 +104,17 @@ function ScrollRouter() {
           <ul className="list-none p-0 m-0">
             <li>
               <a 
-                href="#about" 
+                href="#experience" 
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                   setActiveSection('/');
                 }}
                 className={`group flex items-center py-3 no-underline ${
                   activeSection === '/' ? 'active' : ''
                 }`}
               >
-                <span className="nav-text">About</span>
+                <span className="nav-text">Experience</span>
               </a>
             </li>
             <li>
@@ -175,8 +180,8 @@ function ScrollRouter() {
       </div>
 
       {/* Right Content Area */}
-      <div className="w-full pl-[max(calc(40vw+2rem),400px)] pr-[max(calc(5vw+2rem),300px)] lg:pl-8 lg:pr-8">
-        <div className="max-w-5xl pl-16 pr-16 lg:pl-0 lg:pr-0">
+    <div className="w-full bg-white min-h-screen lg:ml-[40vw] lg:w-[60vw]">
+        <div className="max-w-4xl mx-auto px-8 py-12">
           <div ref={homeRef}>
             <Home />
           </div>

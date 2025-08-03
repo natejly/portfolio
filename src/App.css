@@ -1,16 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Global body styling */
-@layer base {
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    color: #000000;
-    background-color: #ffffff;
-    overflow-x: hidden;
-  }
+/* Global body styling - remove conflicting Tailwind imports */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Profile section styling */
@@ -34,8 +26,8 @@
 
 /* Navigation Styles */
 .nav-text {
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all 0.12s ease;

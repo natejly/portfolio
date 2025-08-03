@@ -1,7 +1,6 @@
 function P1() {
   return (
     <section id="projects" className="min-h-screen p-16 flex flex-col justify-center max-w-[1200px] mx-auto">
-      <h2 className="text-4xl font-semibold text-center mb-12 text-[#13294B]">My Projects</h2>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 mt-8">
         <div className="bg-white rounded-2xl p-8 shadow-[0_4px_6px_-1px_rgba(19,41,75,0.1)] border border-[#1D96CD]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_25px_-5px_rgba(19,41,75,0.15)]">
           <h3 className="text-xl font-semibold mb-4 text-[#13294B]">Project</h3>
