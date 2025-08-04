@@ -150,7 +150,7 @@ function Experience() {
           />
         </div>
         {/* Section Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 mt-5">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4 ${
             isDarkMode ? 'text-white' : 'text-gray-900'
           }`}>
