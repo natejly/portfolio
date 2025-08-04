@@ -75,7 +75,7 @@ const ProjectCard = ({
             <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden hidden sm:block">
               <video 
                 controls 
-                {...(window.innerWidth >= 640 ? { autoPlay: true } : {})}
+                autoPlay
                 muted
                 loop
                 playsInline
@@ -88,68 +88,22 @@ const ProjectCard = ({
                 Your browser does not support the video tag.
               </video>
             </div>
-            {/* Mobile: show image preview with lazy video option */}
+            {/* Mobile: show video directly instead of image preview */}
             <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden sm:hidden">
-              {imageUrl ? (
-                <div className="relative">
-                  <img 
-                    src={imageUrl} 
-                    alt={`${title} preview`}
-                    className="w-full h-auto object-cover transition-all duration-300"
-                    loading="lazy"
-                    onClick={e => e.stopPropagation()}
-                  />
-                  {/* Optional: Add play button overlay for mobile */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // Replace image with video on click for mobile
-                        const img = e.target.closest('div').querySelector('img');
-                        const video = document.createElement('video');
-                        video.src = videoUrl;
-                        video.controls = true;
-                        video.muted = true;
-                        video.playsInline = true;
-                        video.className = img.className;
-                        video.preload = 'auto';
-                        img.parentNode.replaceChild(video, img);
-                        video.play();
-                      }}
-                      className="bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 transition-all duration-200 hover:scale-110"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="w-full h-48 bg-gray-300 flex items-center justify-center text-gray-500 text-lg">
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Create video element on demand
-                      const placeholder = e.target.closest('div');
-                      const video = document.createElement('video');
-                      video.src = videoUrl;
-                      video.controls = true;
-                      video.muted = true;
-                      video.playsInline = true;
-                      video.className = "w-full h-auto object-cover transition-all duration-300";
-                      video.preload = 'auto';
-                      placeholder.parentNode.replaceChild(video, placeholder);
-                      video.play();
-                    }}
-                    className="flex items-center gap-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    Load Video
-                  </button>
-                </div>
-              )}
+              <video 
+                controls 
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                loading="lazy"
+                className="w-full h-auto object-cover transition-all duration-300"
+                onClick={e => e.stopPropagation()}
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         ) : imageUrl ? (
