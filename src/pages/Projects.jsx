@@ -71,10 +71,11 @@ const ProjectCard = ({
         {/* Video or Image - now shown by default */}
         {videoUrl ? (
           <div className="mb-6">
-            <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden">
+            {/* Desktop: show video */}
+            <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden hidden sm:block">
               <video 
                 controls 
-                autoPlay
+                {...(window.innerWidth >= 640 ? { autoPlay: true } : {})}
                 muted
                 loop
                 playsInline
@@ -84,6 +85,19 @@ const ProjectCard = ({
                 <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+            </div>
+            {/* Mobile: show image preview */}
+            <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden sm:hidden">
+              {imageUrl ? (
+                <img 
+                  src={imageUrl} 
+                  alt={`${title} preview`}
+                  className="w-full h-auto object-cover transition-all duration-300"
+                  onClick={e => e.stopPropagation()}
+                />
+              ) : (
+                <div className="w-full h-48 bg-gray-300 flex items-center justify-center text-gray-500 text-lg">Video Preview</div>
+              )}
             </div>
           </div>
         ) : imageUrl ? (
