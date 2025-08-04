@@ -140,13 +140,13 @@ function Experience() {
         <div className="relative mb-12">
           <div className={`absolute inset-0 rounded-[2.5rem] ${
           isDarkMode
-            ? 'bg-gradient-to-r from-blue-500 to-indigo-500'
-            : 'bg-gradient-to-r from-blue-500 to-pink-500'
+            ? 'bg-gradient-to-r from-blue-500 to-indigo-500 top-10'
+            : 'bg-gradient-to-r from-blue-500 to-pink-500 top-10'
           } blur-lg opacity-20 scale-110`} />
           <img 
             src={profileImage}
             alt="Profile"
-            className="relative w-[14rem] sm:w-[24rem] h-[14rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto shadow-2xl ring-4 ring-white/10"
+            className="top-10 relative w-[14rem] sm:w-[24rem] h-[14rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto shadow-2xl ring-4 ring-white/10"
           />
         </div>
         {/* Section Header */}

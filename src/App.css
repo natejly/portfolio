@@ -19,12 +19,13 @@ html {
 .profile-section h1 {
   margin: 0 !important;
   padding: 0 !important;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
 }
 
 .profile-section h2 {
   margin: 0.25rem 0 0 0 !important;
+  font-size: 2.5rem !important;
   padding: 0 !important;
 }
 
@@ -32,11 +33,12 @@ html {
   margin: 0.5rem 0 0 0 !important;
   padding: 0 !important;
   margin-bottom: 0.8rem !important;
+  font-size: 1.2rem !important;
 }
 
 /* Navigation Styles */
 .nav-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -55,6 +57,7 @@ html {
 .light-mode nav a:hover .nav-text {
   color: #000000;
   font-weight: 800;
+  font-size: 1.75rem;
   /* Removed font-size and letter-spacing changes to prevent juttering */
 }
 
@@ -67,6 +70,7 @@ html {
 .dark-mode nav a:hover .nav-text {
   color: #F5F5DC; /* cream */
   font-weight: 800;
+  font-size: 1.75rem;
   /* Removed font-size and letter-spacing changes to prevent juttering */
 }
 

@@ -29,7 +29,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
   };
 
   return (
-    <div className={`fixed left-10 top-5 w-[40vw] h-screen p-12 flex flex-col hidden lg:flex transition-all duration-300 backdrop-blur-sm ${
+    <div className={`fixed left-25 top-0 w-[40vw] h-screen p-30 flex flex-col hidden lg:flex transition-all duration-300 backdrop-blur-sm ${
       isDarkMode 
         ? 'bg-transparent text-white dark-mode' 
         : 'bg-white/80 text-gray-900 light-mode'
