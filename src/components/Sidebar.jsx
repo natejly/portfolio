@@ -64,7 +64,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
       </nav>
 
       {/* Social Media Icons */}
-      <div className="mt-auto mb-[4rem] flex items-center gap-[1rem]" aria-label="Social media">
+      <div className="mt-auto mb-[10rem] flex items-center gap-[1rem]" aria-label="Social media">
         <SocialIcon 
           url="https://github.com/natejly" 
           style={socialIconSize}
