@@ -48,7 +48,7 @@ function ScrollRouter() {
       />
 
       {/* Right Content Area */}
-      <div className="w-full min-h-screen lg:ml-[40vw] lg:w-[60vw] lg:mr-5 transition-colors duration-300 relative bg-transparent">
+      <div className="w-full mt-5 min-h-screen lg:ml-[40vw] lg:w-[60vw] lg:mr-5 transition-colors duration-300 relative bg-transparent">
         <div className="max-w-4xl mx-auto px-4 sm:px-8 py-6 sm:py-12">
           <DarkModeToggle />
           
