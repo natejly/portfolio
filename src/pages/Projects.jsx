@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDarkMode } from '../context/DarkModeContext';
 import octImage from '../assets/oct.png';
 import rowingImage from '../assets/rowing.png';
+import sloImage from '../assets/SLO.png';
 // Project Card Component
 const ProjectCard = ({
   title,
@@ -215,16 +216,18 @@ function Projects() {
     {
       title: "Pupil Tracking",
       shortDescription: "Robust pupil tracking pipeline using OpenCV and classical image processing to label data for CNN segmentation.",
-      fullDescription: "• Developed a robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.\n• Implemented multi-threshold segmentation, contour extraction, ellipse regression, and temporal smoothing.\n• Trained a scaled-down SegNet CNN on 550k augmented image-mask pairs for direct pupil segmentation.\n• Benchmarked model performance, reducing localization error 1.9x and increasing speed 1.7x to 60+ FPS",
+      fullDescription: "• Developed a robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.\n• Implemented coarse localization, multi-threshold segmentation, contour extraction, ellipse regression, and temporal smoothing.\n• Trained a scaled-down SegNet CNN on 550k augmented image-mask pairs for direct pupil segmentation.\n• Benchmarked model performance, reducing localization error by 53% and increasing speed by 1.7x to 60+ FPS",
       technologies: ["OpenCV", "TensorFlow", "ONNX", "Computer Vision", "Lime", "Python", "C++"],
       videoUrl: "https://portfolionatejly.s3.us-east-2.amazonaws.com/TrackingCompilation.mp4",
       placeDeveloped: "Kodiak Sciences",
     },
+
     {
       title: "Retina Vessel Detection",
       shortDescription: "Real-time detection of SLO vessels in OCT images using deep learning.",
       fullDescription: "• Developed a deep learning model for real-time detection of SLO vessels in OCT images.\n• Utilized U-Net architecture with data augmentation techniques to improve segmentation accuracy.\n• Achieved state-of-the-art performance on benchmark datasets, significantly reducing false positive rates.",
       technologies: ["TensorFlow", "Keras", "U-Net", "OCT", "Image Segmentation"],
+      imageUrl: sloImage,
       placeDeveloped: "Kodiak Sciences",
     },
 
@@ -242,8 +245,8 @@ function Projects() {
     {
       title: "Monte Carlo Tree Search Parameter Tuning",
       shortDescription: "Cellular automaton-inspired simulation to evolve MCTS agents via self-play in Cribbage pegging.",
-      fullDescription: "• Designed a cellular automaton-inspired simulation to evolve MCTS agents via self-play in Cribbage pegging.\n• Incorporated reinforcement learning principles with evolutionary strategies and genetic mutation.\n• Evolved UCT constants, rollout counts, search depths, and backpropagation weights.\n• Leveraged multithreading to parallelize self-play simulations and MCTS rollouts.",
-      technologies: ["Reinforcement Learning", "Evolutionary Strategies", "Genetic Algorithms", "Multithreading"],
+      fullDescription: "• Designed a cellular automaton simulation to evolve MCTS agents for Cribbage pegging through self-play\n• Optimized MCTS parameters (UCT constant, rollouts, depth, backpropagation) via evolutionary algorithms\n• Leveraged multiprocessing to parallelize self-play and rollouts to accelerate training",
+      technologies: ["Evolutionary Strategies", "Genetic Algorithms", "Multithreading"],
       githubLink: "https://github.com/natejly/life",
       videoUrl: "https://portfolionatejly.s3.us-east-2.amazonaws.com/GOLF.mp4",
       placeDeveloped: "School Project",

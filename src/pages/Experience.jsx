@@ -117,7 +117,7 @@ function Experience() {
       title: "Machine Learning Intern",
       company: "Kodiak Sciences Inc.",
       location: "Palo Alto, CA",
-      description: "Developing deep learning models for cleaning and segmenting retinal images. Designed robust pupil-tracking algorithm to handle occlusions and reflections during retinal imaging.",
+      description: "Developing deep learning models for cleaning and segmenting retinal images. Designed robust pupil-tracking algorithm to label images for CNN based approach, deploying models to production with ONNX.",
       skills: ["TensorFlow", "ONNX", "C++", "Computer Vision", "Deep Learning", "OpenCV", "Segmentation"]
     },
     {
