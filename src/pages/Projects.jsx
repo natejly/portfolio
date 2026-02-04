@@ -3,8 +3,10 @@ import { useDarkMode } from '../context/DarkModeContext';
 import octImage from '../assets/oct.png';
 import rowingImage from '../assets/rowing.png';
 import sloImage from '../assets/SLO.png';
-import trackingVideo from '../assets/TrackingCompilation.mp4';
-import golfVideo from '../assets/GOLF.mp4';
+
+// Load videos from GitHub LFS instead of local imports
+const trackingVideo = 'https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/TrackingCompilation.mp4';
+const golfVideo = 'https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/GOLF.mp4';
 // Project Card Component
 const ProjectCard = ({
   title,
