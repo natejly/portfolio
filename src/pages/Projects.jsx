@@ -3,6 +3,8 @@ import { useDarkMode } from '../context/DarkModeContext';
 import octImage from '../assets/oct.png';
 import rowingImage from '../assets/rowing.png';
 import sloImage from '../assets/SLO.png';
+import trackingVideo from '../assets/TrackingCompilation.mp4';
+import golfVideo from '../assets/GOLF.mp4';
 // Project Card Component
 const ProjectCard = ({
   title,
@@ -212,13 +214,20 @@ function Projects() {
   const { isDarkMode } = useDarkMode();
   
   const projects = [
+    {
+      title: "Curate",
+      shortDescription: "Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training.",
+      fullDescription: "• Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training\n• Integrated RAG using LangChain and Pinecone vector database for context-aware hyperparameter optimization\n• Built scalable AWS pipeline with SageMaker for dataset processing, model training, logging, and deployment\n• Developed Next.js dashboard with real-time training metrics, interactive visualizations, and progress tracking",
+      technologies: ["Next.js", "AWS SageMaker", "LangChain", "Pinecone", "RAG", "LLM", "Python"],
+      placeDeveloped: "Work in Progress",
+    },
 
     {
       title: "Pupil Tracking",
       shortDescription: "Robust pupil tracking pipeline using OpenCV and classical image processing to label data for CNN segmentation.",
       fullDescription: "• Developed a robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.\n• Implemented coarse localization, multi-threshold segmentation, contour extraction, ellipse regression, and temporal smoothing.\n• Trained a scaled-down SegNet CNN on 550k augmented image-mask pairs for direct pupil segmentation.\n• Benchmarked model performance, reducing localization error by 53% and increasing speed by 1.7x to 60+ FPS",
       technologies: ["OpenCV", "TensorFlow", "ONNX", "Computer Vision", "Lime", "Python", "C++"],
-      videoUrl: "https://portfolionatejly.s3.us-east-2.amazonaws.com/TrackingCompilation.mp4",
+      videoUrl: trackingVideo,
       placeDeveloped: "Kodiak Sciences",
     },
 
@@ -248,7 +257,7 @@ function Projects() {
       fullDescription: "• Designed a cellular automaton simulation to evolve MCTS agents for Cribbage pegging through self-play\n• Optimized MCTS parameters (UCT constant, rollouts, depth, backpropagation) via evolutionary algorithms\n• Leveraged multiprocessing to parallelize self-play and rollouts to accelerate training",
       technologies: ["Evolutionary Strategies", "Genetic Algorithms", "Multithreading"],
       githubLink: "https://github.com/natejly/life",
-      videoUrl: "https://portfolionatejly.s3.us-east-2.amazonaws.com/GOLF.mp4",
+      videoUrl: golfVideo,
       placeDeveloped: "School Project",
     },
     {
