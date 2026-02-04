@@ -219,7 +219,8 @@ function Projects() {
       shortDescription: "Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training.",
       fullDescription: "• Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training\n• Integrated RAG using LangChain and Pinecone vector database for context-aware hyperparameter optimization\n• Built scalable AWS pipeline with SageMaker for dataset processing, model training, logging, and deployment\n• Developed Next.js dashboard with real-time training metrics, interactive visualizations, and progress tracking",
       technologies: ["Next.js", "AWS SageMaker", "LangChain", "Pinecone", "RAG", "LLM", "Python"],
-      placeDeveloped: "Work in Progress",
+      githubLink: "https://github.com/natejly/Curate",
+      placeDeveloped: "Personal (Work in Progress)",
     },
 
     {
