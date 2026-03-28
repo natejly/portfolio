@@ -217,12 +217,21 @@ function Projects() {
   
   const projects = [
     {
+      title: "FAI",
+      shortDescription: "macOS overlay app that uses OCR to hilight suspicious AI generated text in real time.",
+      fullDescription: "• Built a background macOS app in Swift that captures screenshots, runs OCR, and overlays color-coded highlights on detected text regions\n• Integrated a local FastAPI scoring service to classify extracted text with the `openai-community/roberta-base-openai-detector` model\n• Added live and frozen-screen detection modes with keyboard shortcuts for continuous monitoring and one-shot analysis\n• Designed a transparent, click-through overlay to visualize high-risk and low-risk text directly on top of the active screen",
+      technologies: ["Swift", "OCR", "FastAPI", "PyTorch", "AI Detection", "Computer Vision"],
+      githubLink: "https://github.com/natejly/FAI",
+      placeDeveloped: "Personal (Work in Progress)",
+    },
+
+    {
       title: "Curate",
       shortDescription: "Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training.",
       fullDescription: "• Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training\n• Integrated RAG using LangChain and Pinecone vector database for context-aware hyperparameter optimization\n• Built scalable AWS pipeline with SageMaker for dataset processing, model training, logging, and deployment\n• Developed Next.js dashboard with real-time training metrics, interactive visualizations, and progress tracking",
       technologies: ["Next.js", "TypeScript", "AWS SageMaker", "LangChain", "Pinecone", "RAG", "LLM", "Python"],
       githubLink: "https://github.com/natejly/Curate",
-      placeDeveloped: "Personal (Work in Progress)",
+      placeDeveloped: "Personal",
     },
 
     {
@@ -251,6 +260,15 @@ function Projects() {
       imageUrl: octImage,
       placeDeveloped: "Kodiak Sciences",
 
+    },
+
+    {
+      title: "Reddit Sentiment Trading Backtester",
+      shortDescription: "Pipeline for scraping Reddit investing threads, extracting ticker sentiment, and backtesting a sentiment-driven long/short strategy.",
+      fullDescription: "• Scraped Daily Discussion and WallStreetBets discussion threads to build a dated corpus of ticker mentions and comment sentiment\n• Classified Reddit text with VADER sentiment analysis augmented by a WallStreetBets-specific lexicon\n• Backtested a sentiment-driven long/short strategy using historical market data from yfinance across multiple holding periods\n• Built notebook-based analysis tooling to inspect corpora, trades, and backtest performance summaries",
+      technologies: ["Python", "Pandas", "NumPy", "yfinance", "VADER", "Reddit Scraping", "Sentiment Analysis", "Backtesting"],
+      githubLink: "https://github.com/natejly/LingFinal",
+      placeDeveloped: "School Project",
     },
 
 
