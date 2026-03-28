@@ -1,9 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Lato:wght@300;400;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  font-family: "Inter", "SF Pro Display", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --font-body: "Lato", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Fraunces", Georgia, serif;
+  --site-bg: #fbf9f4;
+  --site-panel: #fefdfb;
+  --site-ink: #14223a;
+  --site-muted: #5e6778;
+  --site-border: #d8dde9;
+  --site-accent: #8ea7ef;
+  --site-accent-soft: #edf2ff;
 
   /* Organic color palette with subtle variations */
   --cream-warm: #FFF5E6;
@@ -59,6 +69,7 @@ html, body {
   padding: 0;
   height: 100%;
   background-color: #ffffff; /* Default to white, will be overridden by dark mode */
+  font-family: var(--font-body);
 }
 
 /* Hide scrollbar for webkit browsers */
@@ -72,6 +83,40 @@ body::-webkit-scrollbar {
   height: 100vh;
   overscroll-behavior: none;
   scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.font-display {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.eyebrow-text {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 @media (prefers-color-scheme: light) {
@@ -222,23 +267,17 @@ body::-webkit-scrollbar {
 html.light-mode, 
 html.light-mode body,
 html.light-mode #root {
-  background: linear-gradient(
-    135deg,
-    var(--cream-warm) 0%,
-    var(--cream-cool) 40%,
-    #ffffff 100%
-  ) !important;
-  color: var(--text-primary) !important;
+  background:
+    radial-gradient(circle at top left, rgba(142, 167, 239, 0.22), transparent 30%),
+    linear-gradient(180deg, #fbf9f4 0%, #f6f3ec 100%) !important;
+  color: var(--site-muted) !important;
 }
 
 html.dark-mode, 
 html.dark-mode body,
 html.dark-mode #root {
-  background: linear-gradient(
-    135deg,
-    #0a0e1a 0%,
-    var(--slate-warm) 30%,
-    var(--slate-cool) 100%
-  ) !important;
+  background:
+    radial-gradient(circle at top left, rgba(100, 126, 168, 0.12), transparent 26%),
+    linear-gradient(180deg, #182235 0%, #131d2d 100%) !important;
   color: var(--slate-soft) !important;
 }

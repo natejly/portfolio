@@ -7,12 +7,12 @@ function P2() {
   return (
     <section id="contact" className="min-h-screen ml-7 pt-8 pb-4 flex flex-col text-center justify-start max-w-[1200px] mx-auto">
       <div className={`transition-colors duration-300 ${
-        isDarkMode ? 'text-cream' : 'text-black'
-      } text-xl font-medium`}>
-        I can be reached at <a href="mailto:natejly@gmail.com" className={isDarkMode ? 'text-blue-400 underline' : 'text-blue-600 underline'}>natejly@gmail.com</a>
+        isDarkMode ? 'text-cream' : 'text-[#14223a]'
+      } text-xl font-medium font-body`}>
+        I can be reached at <a href="mailto:natejly@gmail.com" className={isDarkMode ? 'text-blue-400 underline' : 'text-[#506fc6] underline'}>natejly@gmail.com</a>
       </div>
       <div className="flex-grow" />
-      <footer className={`mb-2 text-center text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+      <footer className={`mb-2 text-center text-sm ${isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'}`}>
         Website built with React, Vite, and Tailwind CSS &mdash; Deployed with Vercel
       </footer>
     </section>

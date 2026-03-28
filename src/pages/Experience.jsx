@@ -17,16 +17,16 @@ const ResumeCard = ({
   
   return (
     <div 
-      className={`relative rounded-lg transition-all duration-200 hover:shadow-md ${
+      className={`relative rounded-lg transition-all duration-200 ${
         isDarkMode 
-          ? 'bg-slate-800 border border-slate-700 hover:border-slate-600' 
-          : 'bg-white border border-gray-200 hover:border-gray-300'
+          ? 'bg-slate-800/90 border border-slate-700 hover:border-slate-600/80 hover:shadow-sm' 
+          : 'bg-[#fefdfb] border border-[#d8dde9] hover:border-[#8ea7ef] hover:shadow-sm'
       }`}
     >
       
       {/* Timeline Indicator */}
-      <div className={`absolute left-0 top-0 w-1 h-full rounded-2xl${
-        isDarkMode ? 'bg-blue-400' : 'bg-blue-500'
+      <div className={`absolute left-0 top-0 w-1 h-full rounded-2xl ${
+        isDarkMode ? 'bg-blue-400' : 'bg-[#8ea7ef]'
       }`} />
       
       {/* Content Section */}
@@ -35,13 +35,13 @@ const ResumeCard = ({
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
           <div className="flex-1">
             <h3 className={`text-xl sm:text-2xl font-bold mb-2 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
+              isDarkMode ? 'text-white' : 'text-[#14223a]'
+            } font-display`}>
               {title}
             </h3>
             <div className="flex items-center gap-2 mb-2">
-              <h4 className={`text-lg font-semibold ${
-                isDarkMode ? 'text-blue-400' : 'text-blue-600'
+              <h4 className={`text-sm sm:text-base font-bold eyebrow-text font-body ${
+                isDarkMode ? 'text-blue-400' : 'text-[#5e6778]'
               }`}>
                 {company}
               </h4>
@@ -53,13 +53,13 @@ const ResumeCard = ({
             <div className={`inline-flex items-center px-3 py-1 rounded-md text-sm font-medium ${
               isDarkMode 
                 ? 'bg-slate-700 text-slate-200' 
-                : 'bg-gray-100 text-gray-700'
-            }`}>
+                : 'bg-[#edf2ff] text-[#14223a]'
+            } font-body`}>
               {dateRange}
             </div>
             {location && (
               <div className={`flex items-center justify-end gap-1 text-sm ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
+                isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
               }`}>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -74,34 +74,35 @@ const ResumeCard = ({
         {/* Description */}
         <div className="mb-6">
           <p className={`leading-relaxed ${
-            isDarkMode ? 'text-slate-300' : 'text-gray-700'
+            isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
           }`}>
             {description}
           </p>
         </div>
         
-        {/* Skills */}
-        <div className="space-y-3">
-          <div className={`text-sm font-medium ${
-            isDarkMode ? 'text-slate-400' : 'text-gray-600'
-          }`}>
-            Skills & Technologies
+        {skills?.length > 0 && (
+          <div className="space-y-3">
+            <div className={`text-sm font-medium ${
+              isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
+            } font-body`}>
+              Skills & Technologies
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill, skillIndex) => (
+                <span
+                  key={skillIndex}
+                  className={`px-3 py-1 rounded-md text-sm ${
+                    isDarkMode 
+                      ? 'bg-slate-700 text-slate-300' 
+                      : 'bg-[#edf2ff] text-[#14223a]'
+                  }`}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill, skillIndex) => (
-              <span
-                key={skillIndex}
-                className={`px-3 py-1 rounded-md text-sm ${
-                  isDarkMode 
-                    ? 'bg-slate-700 text-slate-300' 
-                    : 'bg-gray-100 text-gray-700'
-                }`}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
@@ -112,6 +113,14 @@ function Experience() {
   const { isDarkMode } = useDarkMode();
   
   const experiences = [
+    {
+      dateRange: "OCT. 2025 — PRESENT",
+      title: "Machine Learning Consultant",
+      company: "Kodiak Sciences Inc.",
+      location: "Remote",
+      description: "Develop machine learning models and infrastructure.",
+      skills: []
+    },
     {
       dateRange: "JUN. 2025 — AUG. 2025",
       title: "Machine Learning Intern",
@@ -137,27 +146,26 @@ function Experience() {
       
       <div className="max-w-6xl mx-auto flex flex-col items-center">
                 {/* Profile Image */}
-        <div className="relative mb-12">
-          <div className={`absolute inset-0 rounded-[2.5rem] ${
-          isDarkMode
-            ? 'bg-gradient-to-r from-blue-500 to-indigo-500 top-10'
-            : 'bg-gradient-to-r from-blue-500 to-pink-500 top-10'
-          } blur-lg opacity-20 scale-110`} />
+        <div className="relative mb-12 top-10">
           <img 
             src={profileImage}
             alt="Profile"
-            className="top-10 relative w-[14rem] sm:w-[24rem] h-[14rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto shadow-2xl ring-4 ring-white/10"
+            className={`relative w-[14rem] sm:w-[24rem] h-[14rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto border-4 ${
+              isDarkMode
+                ? 'border-slate-700 shadow-lg shadow-black/20'
+                : 'border-[#d8dde9] shadow-md shadow-[#dbe1ef]/40'
+            }`}
           />
         </div>
         {/* Section Header */}
         <div className="text-center mb-8 mt-5">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            Professional Experience
+            isDarkMode ? 'text-white' : 'text-[#14223a]'
+          } font-display`}>
+            My Experience
           </h2>
           <p className={`text-lg ${
-            isDarkMode ? 'text-slate-400' : 'text-gray-600'
+            isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
           }`}>
             My journey in software development and machine learning
           </p>
@@ -172,7 +180,7 @@ function Experience() {
               {/* Timeline connector line (except for last item) */}
               {index < experiences.length - 1 && (
                 <div className={`absolute left-6 top-full w-0.5 h-12 ${
-                  isDarkMode ? 'bg-slate-600' : 'bg-gray-300'
+                  isDarkMode ? 'bg-slate-600' : 'bg-[#d8dde9]'
                 } transform translate-y-0`} />
               )}
               
@@ -180,7 +188,7 @@ function Experience() {
               <div className={`absolute left-4 top-8 w-4 h-4 rounded-full border-4 ${
                 isDarkMode 
                   ? 'bg-blue-400 border-slate-800' 
-                  : 'bg-blue-600 border-white'
+                  : 'bg-[#8ea7ef] border-[#fbf9f4]'
               } shadow-lg z-10`} />
               
               {/* Experience card with left margin for timeline */}
@@ -200,7 +208,7 @@ function Experience() {
             className={`inline-flex items-center gap-2 px-3 py-1 rounded-md transition-all duration-200 cursor-pointer ${
               isDarkMode 
                 ? 'bg-blue-600 text-white hover:bg-blue-500' 
-                : 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-[#8ea7ef] text-[#14223a] hover:bg-[#7f99e6]'
             }`}
           >
             <span className="font-medium">View Full Resume</span>

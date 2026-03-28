@@ -10,13 +10,13 @@ const MobileHeader = () => {
     <div className={`lg:hidden w-full p-6 pb-0 transition-all duration-300 backdrop-blur-sm ${
       isDarkMode 
         ? 'bg-transparent text-white dark-mode' 
-        : 'bg-white/80 text-gray-900 light-mode'
+        : 'bg-[#fbf9f4]/80 text-[#14223a] light-mode'
     }`}>
       {/* Name and Description */}
       <div className="text-center profile-section mb-6">
-        <h1 className="text-4xl font-bold mb-2">Nate Ly</h1>
+        <h1 className="font-display text-4xl mb-2">Nate Ly</h1>
         <p className={`text-base leading-snug ${
-          isDarkMode ? 'text-slate-400' : 'text-gray-600'
+          isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
         }`}>
           I'm passionate about building intelligent systems that solve real-world problems
         </p>
@@ -27,24 +27,24 @@ const MobileHeader = () => {
         <SocialIcon 
           url="https://github.com/natejly" 
           style={socialIconSize}
-          className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          className="transition-transform duration-200 hover:scale-110"
+          bgColor={isDarkMode ? "#3b82f6" : "#14223a"}
           fgColor="#ffffff"
           target="_blank"
         />
         <SocialIcon 
           url="https://www.linkedin.com/in/natejly/" 
           style={socialIconSize}
-          className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          className="transition-transform duration-200 hover:scale-110"
+          bgColor={isDarkMode ? "#3b82f6" : "#14223a"}
           fgColor="#ffffff"
           target="_blank"
         />
         <SocialIcon 
           url="https://instagram.com/natejly" 
           style={socialIconSize}
-          className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          className="transition-transform duration-200 hover:scale-110"
+          bgColor={isDarkMode ? "#3b82f6" : "#14223a"}
           fgColor="#ffffff"
           target="_blank"
         />

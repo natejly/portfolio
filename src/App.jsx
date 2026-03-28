@@ -38,8 +38,8 @@ function ScrollRouter() {
   return (
     <div className={`flex min-h-screen transition-colors duration-300 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' 
-        : 'bg-gradient-to-br from-gray-50 via-white to-gray-50'
+        ? 'bg-[#182235]' 
+        : 'bg-[#fbf9f4]'
     }`}>
       {/* Left Sidebar - Hidden on small screens */}
       <Sidebar 

@@ -12,7 +12,7 @@ export const useDarkMode = () => {
 };
 
 export const DarkModeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode
 
   // Load dark mode preference from localStorage
   useEffect(() => {
@@ -20,7 +20,7 @@ export const DarkModeProvider = ({ children }) => {
     if (savedDarkMode !== null) {
       setIsDarkMode(JSON.parse(savedDarkMode));
     }
-    // If no saved preference, keep the default (true for dark mode)
+    // If no saved preference, keep the default light mode
   }, []);
 
   // Save dark mode preference to localStorage

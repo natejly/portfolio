@@ -32,13 +32,13 @@ const Sidebar = ({ activeSection, onNavigate }) => {
     <div className={`fixed left-[10vw] top-0 w-[40vw] pt-8 sm:pt-25 h-screen pl-10 pr-40 flex flex-col hidden lg:flex transition-all duration-300 backdrop-blur-sm ${
       isDarkMode 
         ? 'bg-transparent text-white dark-mode' 
-        : 'bg-white/80 text-gray-900 light-mode'
+        : 'bg-[#fbf9f4]/80 text-[#14223a] light-mode'
     }`}>
       {/* Profile Section */}
       <div className="text-left profile-section">
-        <h1>Nate Ly</h1>
+        <h1 className="font-display">Nate Ly</h1>
         <p className={`text-base leading-snug ${
-          isDarkMode ? 'text-slate-400' : 'text-gray-600'
+          isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
         }`}>
           I'm passionate about building intelligent systems that solve real-world problems
         </p>
@@ -68,24 +68,24 @@ const Sidebar = ({ activeSection, onNavigate }) => {
         <SocialIcon 
           url="https://github.com/natejly" 
           style={socialIconSize}
-          className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          className="transition-transform duration-200 hover:scale-110"
+          bgColor={isDarkMode ? "#3b82f6" : "#14223a"}
           fgColor="#ffffff"
           target="_blank"
         />
         <SocialIcon 
           url="https://www.linkedin.com/in/natejly/" 
           style={socialIconSize}
-          className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          className="transition-transform duration-200 hover:scale-110"
+          bgColor={isDarkMode ? "#3b82f6" : "#14223a"}
           fgColor="#ffffff"
           target="_blank"
         />
         <SocialIcon 
           url="https://instagram.com/natejly" 
           style={socialIconSize}
-          className="transition-transform duration-200 hover:scale-125"
-          bgColor={isDarkMode ? "#3b82f6" : "#1f2937"}
+          className="transition-transform duration-200 hover:scale-110"
+          bgColor={isDarkMode ? "#3b82f6" : "#14223a"}
           fgColor="#ffffff"
           target="_blank"
         />

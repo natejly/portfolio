@@ -27,10 +27,10 @@ const ProjectCard = ({
   
   return (
     <div 
-      className={`group relative overflow-hidden rounded-lg transition-all duration-500 ease-out transform hover:scale-[1.02] hover:-translate-y-2 ${hasExpandableContent ? 'cursor-pointer' : ''} ${
+      className={`group relative overflow-hidden rounded-lg transition-all duration-300 ease-out transform hover:-translate-y-0.5 ${hasExpandableContent ? 'cursor-pointer' : ''} ${
         isDarkMode 
-          ? 'bg-gradient-to-br from-slate-800/90 via-slate-800/70 to-slate-900/90 border border-slate-600/40 hover:border-blue-400/50 shadow-2xl hover:shadow-blue-500/20' 
-          : 'bg-gradient-to-br from-white via-gray-50/80 to-white border border-gray-200/60 hover:border-blue-300/60 shadow-xl hover:shadow-2xl hover:shadow-blue-100/50'
+          ? 'bg-slate-800/90 border border-slate-600/40 hover:border-slate-500/60 shadow-xl hover:shadow-lg' 
+          : 'bg-[#fefdfb] border border-[#d8dde9] hover:border-[#8ea7ef] shadow-md hover:shadow-lg'
       }`}
       style={{
         animationDelay: `${index * 0.2}s`
@@ -42,8 +42,8 @@ const ProjectCard = ({
       <div className="absolute inset-0 opacity-5">
         <div className={`absolute inset-0 ${
           isDarkMode 
-            ? 'bg-gradient-to-br from-purple-400/10 to-transparent' 
-            : 'bg-gradient-to-br from-purple-500/10 to-transparent'
+            ? 'bg-gradient-to-br from-blue-300/10 to-transparent' 
+            : 'bg-gradient-to-br from-[#8ea7ef]/20 to-transparent'
         }`} />
       </div>
       
@@ -52,9 +52,9 @@ const ProjectCard = ({
         {/* Header */}
         <div className="flex items-start justify-between mb-8">
           <div className="flex-1">
-            <h3 className={`text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-300 group-hover:scale-105 ${
-              isDarkMode ? 'text-white group-hover:text-purple-300' : 'text-gray-900 group-hover:text-purple-700'
-            }`}>
+            <h3 className={`text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-300 ${
+              isDarkMode ? 'text-white group-hover:text-blue-200' : 'text-[#14223a] group-hover:text-[#506fc6]'
+            } font-display`}>
               {title}
             </h3>
           </div>
@@ -63,8 +63,8 @@ const ProjectCard = ({
             <div className={`inline-flex items-center px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-300 ${
               isDarkMode 
                 ? 'bg-slate-800/40 text-slate-400 group-hover:text-slate-300' 
-                : 'bg-gray-100/60 text-gray-600 group-hover:text-gray-700'
-            }`}>
+                : 'bg-[#edf2ff] text-[#5e6778] group-hover:text-[#14223a]'
+            } font-body eyebrow-text`}>
               <svg className="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
@@ -129,14 +129,14 @@ const ProjectCard = ({
         {hasExpandableContent && (
           <div className="flex items-center gap-2 mb-4">
             <span className={`text-sm font-medium transition-colors duration-300 ${
-              isDarkMode ? 'text-slate-400 group-hover:text-slate-300' : 'text-gray-600 group-hover:text-gray-700'
-            }`}>
+              isDarkMode ? 'text-slate-400 group-hover:text-slate-300' : 'text-[#5e6778] group-hover:text-[#14223a]'
+            } font-body`}>
               {isExpanded ? 'Click to collapse' : 'Click to learn more'}
             </span>
             <svg 
               className={`w-4 h-4 transition-all duration-300 ${
                 isExpanded ? 'rotate-180' : ''
-              } ${isDarkMode ? 'text-slate-400 group-hover:text-slate-300' : 'text-gray-600 group-hover:text-gray-700'}`}
+              } ${isDarkMode ? 'text-slate-400 group-hover:text-slate-300' : 'text-[#5e6778] group-hover:text-[#14223a]'}`}
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -150,7 +150,7 @@ const ProjectCard = ({
         <div className="mb-6">
           {hasExpandableContent && isExpanded ? (
             <ul className={`list-disc ml-6 transition-all duration-300 ${
-              isDarkMode ? 'text-slate-300' : 'text-gray-600'
+              isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
             } text-sm sm:text-base`}>
               {fullDescription.split('\n').map((line, idx) => (
                 <li key={idx} className="mb-3 whitespace-pre-line">{line.replace(/^•\s*/, '')}</li>
@@ -158,7 +158,7 @@ const ProjectCard = ({
             </ul>
           ) : (
             <p className={`leading-relaxed transition-all duration-300 ${
-              isDarkMode ? 'text-slate-300' : 'text-gray-600'
+              isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
             } text-sm sm:text-base`}>
               {shortDescription}
             </p>
@@ -167,8 +167,8 @@ const ProjectCard = ({
         
         {/* Technologies */}
         <div className={`flex items-center gap-2 mb-2 text-sm font-medium ${
-          isDarkMode ? 'text-slate-400' : 'text-gray-600'
-        }`}>
+          isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
+        } font-body`}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
           </svg>
@@ -178,10 +178,10 @@ const ProjectCard = ({
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-110 hover:-translate-y-0.5 cursor-default ${
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-default ${
                 isDarkMode 
-                  ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30 hover:bg-blue-500/25 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20' 
-                  : 'bg-blue-50 text-blue-800 border border-blue-200/60 hover:bg-blue-100 hover:border-blue-300 hover:shadow-md'
+                  ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-400/40' 
+                  : 'bg-[#edf2ff] text-[#14223a] border border-[#d8dde9] hover:bg-[#e3ebff] hover:border-[#8ea7ef]'
               }`}
             >
               {tech}
@@ -197,8 +197,8 @@ const ProjectCard = ({
               onClick={(e) => e.stopPropagation()} // Prevent card click when clicking link
               className={`ml-auto mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm absolute bottom-6 right-6 ${
                 isDarkMode 
-                  ? 'bg-slate-600/50 text-slate-200 border border-slate-500/30 hover:bg-slate-600 hover:text-white hover:border-slate-400' 
-                  : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400'
+                  ? 'bg-slate-600/50 text-slate-200 border border-slate-500/30 hover:bg-slate-600/70 hover:text-white hover:border-slate-400' 
+                  : 'bg-[#fefdfb] text-[#14223a] border border-[#d8dde9] hover:bg-white hover:border-[#8ea7ef]'
               }`}
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -220,7 +220,7 @@ function Projects() {
       title: "Curate",
       shortDescription: "Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training.",
       fullDescription: "• Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training\n• Integrated RAG using LangChain and Pinecone vector database for context-aware hyperparameter optimization\n• Built scalable AWS pipeline with SageMaker for dataset processing, model training, logging, and deployment\n• Developed Next.js dashboard with real-time training metrics, interactive visualizations, and progress tracking",
-      technologies: ["Next.js", "AWS SageMaker", "LangChain", "Pinecone", "RAG", "LLM", "Python"],
+      technologies: ["Next.js", "TypeScript", "AWS SageMaker", "LangChain", "Pinecone", "RAG", "LLM", "Python"],
       githubLink: "https://github.com/natejly/Curate",
       placeDeveloped: "Personal (Work in Progress)",
     },
@@ -305,12 +305,12 @@ function Projects() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
+            isDarkMode ? 'text-white' : 'text-[#14223a]'
+          } font-display`}>
             Featured Projects
           </h2>
           <p className={`text-lg ${
-            isDarkMode ? 'text-slate-400' : 'text-gray-600'
+            isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
           }`}>
             A showcase of my latest work and technical expertise
           </p>
