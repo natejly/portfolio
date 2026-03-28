@@ -218,7 +218,7 @@ function Projects() {
   const projects = [
     {
       title: "FAI",
-      shortDescription: "macOS overlay app that uses OCR to hilight suspicious AI generated text in real time.",
+      shortDescription: "macOS overlay app that uses OCR to highlight suspicious AI-generated text in real time.",
       fullDescription: "• Built a background macOS app in Swift that captures screenshots, runs OCR, and overlays color-coded highlights on detected text regions\n• Integrated a local FastAPI scoring service to classify extracted text with the `openai-community/roberta-base-openai-detector` model\n• Added live and frozen-screen detection modes with keyboard shortcuts for continuous monitoring and one-shot analysis\n• Designed a transparent, click-through overlay to visualize high-risk and low-risk text directly on top of the active screen",
       technologies: ["Swift", "OCR", "FastAPI", "PyTorch", "AI Detection", "Computer Vision"],
       githubLink: "https://github.com/natejly/FAI",
