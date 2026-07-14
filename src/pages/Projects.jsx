@@ -3,6 +3,8 @@ import { useDarkMode } from '../context/DarkModeContext';
 import octImage from '../assets/oct.png';
 import rowingImage from '../assets/rowing.png';
 import sloImage from '../assets/SLO.png';
+import ehrPipelineImage from '../assets/EHR-Pipeline-Diagram.png';
+import predictionMarketsImage from '../assets/Prediction-Markets-Identifiability.png';
 
 // Load videos from GitHub LFS instead of local imports
 const trackingVideo = 'https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/TrackingCompilation.mp4';
@@ -215,12 +217,22 @@ function Projects() {
   
   const projects = [
     {
+      title: "Pupil Tracking",
+      shortDescription: "Robust pupil tracking pipeline using OpenCV and classical image processing to label data for CNN segmentation.",
+      fullDescription: "• Developed a robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.\n• Implemented coarse localization, multi-threshold segmentation, contour extraction, ellipse regression, and temporal smoothing.\n• Trained a scaled-down SegNet CNN on 550k augmented image-mask pairs for direct pupil segmentation.\n• Benchmarked model performance, reducing localization error by 53% and increasing speed by 1.7x to 60+ FPS",
+      technologies: ["OpenCV", "TensorFlow", "ONNX", "Computer Vision", "Lime", "Python", "C++"],
+      videoUrl: trackingVideo,
+      placeDeveloped: "Kodiak Sciences",
+    },
+
+    {
       title: "Reliable EHR Summarization",
       shortDescription: "Evidence-grounded LLM pipeline that creates faithful clinician- and patient-facing summaries from clinical notes and structured EHR data.",
-      fullDescription: "• Built a nine-stage pipeline that parses clinical notes and FHIR R4 data into a shared evidence store before summary generation\n• Extracted and verified clinical claims against structured records, allowing the generator to use only pre-verified facts\n• Added deterministic gates for uncited assertions, fabricated evidence identifiers, numeric drift, and medication errors\n• Evaluated clinician- and patient-facing summaries on 100 MIMIC-III cases, improving ROUGE, BERTScore, and clinical entity recall over a single-shot baseline",
+      fullDescription: "• Built a nine-stage pipeline that parses clinical notes and FHIR R4 data into a shared evidence store before summary generation\n• Extracted and verified clinical claims against structured records, allowing the generator to use only pre-verified facts\n• Added deterministic gates for uncited assertions, fabricated evidence identifiers, numeric drift, and medication errors\n• Outperformed a single-shot Claude Opus 4.7 baseline on ROUGE-1 (0.290 vs 0.130), ROUGE-L (0.187 vs 0.071), BERTScore F1 (0.813 vs 0.793), and clinical entity recall (0.377 vs 0.151) while producing more concise summaries across 100 MIMIC-III cases",
       technologies: ["Python", "LLMs", "FHIR R4", "Ollama", "Gemma", "Clinical NLP", "MIMIC-III"],
       githubLink: "https://github.com/natejly/EHR-Summary",
       paperLink: "https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/Reliable-EHR-Summarization.pdf",
+      imageUrl: ehrPipelineImage,
       placeDeveloped: "Yale University",
     },
 
@@ -231,16 +243,8 @@ function Projects() {
       technologies: ["Bayesian Inference", "Sequential Monte Carlo", "Markov Models", "Python", "SciPy", "Polymarket"],
       githubLink: "https://github.com/natejly/pred-mkts-dynamic-price-volume",
       paperLink: "https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/Prediction-Markets-Bayesian-Inverse-Models.pdf",
+      imageUrl: predictionMarketsImage,
       placeDeveloped: "Yale University",
-    },
-
-    {
-      title: "Pupil Tracking",
-      shortDescription: "Robust pupil tracking pipeline using OpenCV and classical image processing to label data for CNN segmentation.",
-      fullDescription: "• Developed a robust pupil tracking pipeline using OpenCV, classical image processing, and CNN segmentation.\n• Implemented coarse localization, multi-threshold segmentation, contour extraction, ellipse regression, and temporal smoothing.\n• Trained a scaled-down SegNet CNN on 550k augmented image-mask pairs for direct pupil segmentation.\n• Benchmarked model performance, reducing localization error by 53% and increasing speed by 1.7x to 60+ FPS",
-      technologies: ["OpenCV", "TensorFlow", "ONNX", "Computer Vision", "Lime", "Python", "C++"],
-      videoUrl: trackingVideo,
-      placeDeveloped: "Kodiak Sciences",
     },
 
     {
@@ -263,16 +267,6 @@ function Projects() {
     },
 
     {
-      title: "Reddit Sentiment Trading Backtester",
-      shortDescription: "Pipeline for scraping Reddit investing threads, extracting ticker sentiment, and backtesting a sentiment-driven long/short strategy.",
-      fullDescription: "• Scraped Daily Discussion and WallStreetBets discussion threads to build a dated corpus of ticker mentions and comment sentiment\n• Classified Reddit text with VADER sentiment analysis augmented by a WallStreetBets-specific lexicon\n• Backtested a sentiment-driven long/short strategy using historical market data from yfinance across multiple holding periods\n• Built notebook-based analysis tooling to inspect corpora, trades, and backtest performance summaries",
-      technologies: ["Python", "Pandas", "NumPy", "yfinance", "VADER", "Reddit Scraping", "Sentiment Analysis", "Backtesting"],
-      githubLink: "https://github.com/natejly/LingFinal",
-      placeDeveloped: "Yale University",
-    },
-
-
-    {
       title: "Monte Carlo Tree Search Parameter Tuning",
       shortDescription: "Cellular automaton-inspired simulation to evolve MCTS agents via self-play in Cribbage pegging.",
       fullDescription: "• Designed a cellular automaton simulation to evolve MCTS agents for Cribbage pegging through self-play\n• Optimized MCTS parameters (UCT constant, rollouts, depth, backpropagation) via evolutionary algorithms\n• Leveraged multiprocessing to parallelize self-play and rollouts to accelerate training",
@@ -281,6 +275,16 @@ function Projects() {
       videoUrl: golfVideo,
       placeDeveloped: "Yale University",
     },
+
+    {
+      title: "Reddit Sentiment Trading Backtester",
+      shortDescription: "Pipeline for scraping Reddit investing threads, extracting ticker sentiment, and backtesting a sentiment-driven long/short strategy.",
+      fullDescription: "• Scraped Daily Discussion and WallStreetBets discussion threads to build a dated corpus of ticker mentions and comment sentiment\n• Classified Reddit text with VADER sentiment analysis augmented by a WallStreetBets-specific lexicon\n• Backtested a sentiment-driven long/short strategy using historical market data from yfinance across multiple holding periods\n• Built notebook-based analysis tooling to inspect corpora, trades, and backtest performance summaries",
+      technologies: ["Python", "Pandas", "NumPy", "yfinance", "VADER", "Reddit Scraping", "Sentiment Analysis", "Backtesting"],
+      githubLink: "https://github.com/natejly/LingFinal",
+      placeDeveloped: "Yale University",
+    },
+
     {
       title: "Rowing Speed Predictor",
       shortDescription: "Neural network using PyTorch to predict rowing speed from oarlock telemetry data.",

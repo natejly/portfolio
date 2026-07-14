@@ -129,7 +129,7 @@ function Experience() {
           <img 
             src={profileImage}
             alt="Profile"
-            className={`relative w-[14rem] sm:w-[24rem] h-[14rem] sm:h-[16rem] object-cover rounded-[2rem] mx-auto border-4 ${
+            className={`relative w-[16rem] sm:w-[28rem] h-[16rem] sm:h-[20rem] object-cover rounded-[2rem] mx-auto border-4 ${
               isDarkMode
                 ? 'border-slate-700 shadow-lg shadow-black/20'
                 : 'border-[#d8dde9] shadow-md shadow-[#dbe1ef]/40'
