@@ -181,7 +181,7 @@ function Experience() {
         {/* Call to Action */}
         <div className="mt-16 text-center">
           <a 
-            href="https://portfolionatejly.s3.us-east-2.amazonaws.com/Ly_Nathaniel_Resume.pdf"
+            href="https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/Ly_Nathaniel_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-2 px-3 py-1 rounded-md transition-all duration-200 cursor-pointer ${
