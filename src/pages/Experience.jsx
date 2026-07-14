@@ -71,21 +71,11 @@ const ResumeCard = ({
         
         {/* Description */}
         <div className="mb-6">
-          {Array.isArray(description) ? (
-            <ul className={`list-disc ml-5 space-y-2 leading-relaxed ${
-              isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
-            }`}>
-              {description.map((item, descriptionIndex) => (
-                <li key={descriptionIndex}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className={`leading-relaxed ${
-              isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
-            }`}>
-              {description}
-            </p>
-          )}
+          <p className={`leading-relaxed ${
+            isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
+          }`}>
+            {description}
+          </p>
         </div>
         
       </div>
@@ -103,10 +93,7 @@ function Experience() {
       title: "Technology Summer Analyst",
       company: "KKR & Co.",
       location: "New York, NY",
-      description: [
-        "Build knowledge graphs that ground AI agents in semantic context and design evaluations for harness changes.",
-        "Built CI/CD for version controlling the Snowflake semantic layer, enabling reliable MCP access for AI agents."
-      ]
+      description: "Build knowledge graphs that ground AI agents in semantic context and design evaluations for harness changes. Built CI/CD for version controlling the Snowflake semantic layer, enabling reliable MCP access for AI agents."
     },
     {
       dateRange: "OCT. 2025 — PRESENT",
