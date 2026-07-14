@@ -10,8 +10,7 @@ const ResumeCard = ({
   company,
   location,
   description,
-  skills,
-  index
+  skills
 }) => {
   const { isDarkMode } = useDarkMode();
   
@@ -73,11 +72,21 @@ const ResumeCard = ({
         
         {/* Description */}
         <div className="mb-6">
-          <p className={`leading-relaxed ${
-            isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
-          }`}>
-            {description}
-          </p>
+          {Array.isArray(description) ? (
+            <ul className={`list-disc ml-5 space-y-2 leading-relaxed ${
+              isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
+            }`}>
+              {description.map((item, descriptionIndex) => (
+                <li key={descriptionIndex}>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className={`leading-relaxed ${
+              isDarkMode ? 'text-slate-300' : 'text-[#5e6778]'
+            }`}>
+              {description}
+            </p>
+          )}
         </div>
         
         {skills?.length > 0 && (
@@ -113,6 +122,17 @@ function Experience() {
   const { isDarkMode } = useDarkMode();
   
   const experiences = [
+    {
+      dateRange: "JUN. 2026 — PRESENT",
+      title: "Technology Summer Analyst",
+      company: "KKR & Co.",
+      location: "New York, NY",
+      description: [
+        "Build knowledge graphs that ground AI agents in semantic context and design evaluations for harness changes.",
+        "Built CI/CD for version controlling the Snowflake semantic layer, enabling reliable MCP access for AI agents."
+      ],
+      skills: ["Knowledge Graphs", "AI Agents", "CI/CD", "Snowflake", "MCP", "Semantic Layers"]
+    },
     {
       dateRange: "OCT. 2025 — PRESENT",
       title: "Machine Learning Consultant",
