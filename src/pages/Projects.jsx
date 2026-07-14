@@ -268,7 +268,7 @@ function Projects() {
       fullDescription: "• Scraped Daily Discussion and WallStreetBets discussion threads to build a dated corpus of ticker mentions and comment sentiment\n• Classified Reddit text with VADER sentiment analysis augmented by a WallStreetBets-specific lexicon\n• Backtested a sentiment-driven long/short strategy using historical market data from yfinance across multiple holding periods\n• Built notebook-based analysis tooling to inspect corpora, trades, and backtest performance summaries",
       technologies: ["Python", "Pandas", "NumPy", "yfinance", "VADER", "Reddit Scraping", "Sentiment Analysis", "Backtesting"],
       githubLink: "https://github.com/natejly/LingFinal",
-      placeDeveloped: "School Project",
+      placeDeveloped: "Yale University",
     },
 
 
@@ -279,7 +279,7 @@ function Projects() {
       technologies: ["Evolutionary Strategies", "Genetic Algorithms", "Multithreading"],
       githubLink: "https://github.com/natejly/life",
       videoUrl: golfVideo,
-      placeDeveloped: "School Project",
+      placeDeveloped: "Yale University",
     },
     {
       title: "Rowing Speed Predictor",
@@ -288,7 +288,7 @@ function Projects() {
       technologies: ["PyTorch", "Neural Networks", "Feature Engineering", "Python"],
       githubLink: "https://github.com/natejly/rowing-speed-predictor",
       imageUrl: rowingImage,
-      placeDeveloped: "School Project",
+      placeDeveloped: "Yale University",
 
     },
 //     {
