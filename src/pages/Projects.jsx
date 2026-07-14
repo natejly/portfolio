@@ -14,6 +14,7 @@ const ProjectCard = ({
   fullDescription,
   technologies,
   githubLink,
+  paperLink,
   imageUrl,
   videoUrl,
   placeDeveloped,
@@ -174,7 +175,7 @@ const ProjectCard = ({
           </svg>
           <span>Skills & Technologies</span>
         </div>
-        <div className={`flex flex-wrap gap-2 ${githubLink ? 'mb-10' : 'mb-4'}`}>
+        <div className={`flex flex-wrap gap-2 ${githubLink || paperLink ? 'mb-10' : 'mb-4'}`}>
           {technologies.map((tech, index) => (
             <span
               key={index}
@@ -188,24 +189,46 @@ const ProjectCard = ({
             </span>
           ))}
           
-          {/* GitHub button in bottom right */}
-          {githubLink && (
-            <a 
-              href={githubLink} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()} // Prevent card click when clicking link
-              className={`ml-auto mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm absolute bottom-6 right-6 ${
-                isDarkMode 
-                  ? 'bg-slate-600/50 text-slate-200 border border-slate-500/30 hover:bg-slate-600/70 hover:text-white hover:border-slate-400' 
-                  : 'bg-[#fefdfb] text-[#14223a] border border-[#d8dde9] hover:bg-white hover:border-[#8ea7ef]'
-              }`}
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              GitHub
-            </a>
+          {/* Resource buttons in bottom right */}
+          {(paperLink || githubLink) && (
+            <div className="absolute bottom-6 right-6 flex items-center gap-2">
+              {paperLink && (
+                <a
+                  href={paperLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm ${
+                    isDarkMode
+                      ? 'bg-slate-600/50 text-slate-200 border border-slate-500/30 hover:bg-slate-600/70 hover:text-white hover:border-slate-400'
+                      : 'bg-[#fefdfb] text-[#14223a] border border-[#d8dde9] hover:bg-white hover:border-[#8ea7ef]'
+                  }`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 3h7l5 5v13H7V3zm7 0v5h5M10 13h6m-6 4h6" />
+                  </svg>
+                  Paper
+                </a>
+              )}
+              {githubLink && (
+                <a 
+                  href={githubLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 text-sm ${
+                    isDarkMode 
+                      ? 'bg-slate-600/50 text-slate-200 border border-slate-500/30 hover:bg-slate-600/70 hover:text-white hover:border-slate-400' 
+                      : 'bg-[#fefdfb] text-[#14223a] border border-[#d8dde9] hover:bg-white hover:border-[#8ea7ef]'
+                  }`}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  GitHub
+                </a>
+              )}
+            </div>
           )}
         </div>
       </div>
@@ -217,21 +240,23 @@ function Projects() {
   
   const projects = [
     {
-      title: "FAI",
-      shortDescription: "macOS overlay app that uses OCR to highlight suspicious AI-generated text in real time.",
-      fullDescription: "• Built a background macOS app in Swift that captures screenshots, runs OCR, and overlays color-coded highlights on detected text regions\n• Integrated a local FastAPI scoring service to classify extracted text with the `openai-community/roberta-base-openai-detector` model\n• Added live and frozen-screen detection modes with keyboard shortcuts for continuous monitoring and one-shot analysis\n• Designed a transparent, click-through overlay to visualize high-risk and low-risk text directly on top of the active screen",
-      technologies: ["Swift", "OCR", "FastAPI", "PyTorch", "AI Detection", "Computer Vision"],
-      githubLink: "https://github.com/natejly/FAI",
-      placeDeveloped: "Personal (Work in Progress)",
+      title: "Reliable EHR Summarization",
+      shortDescription: "Evidence-grounded LLM pipeline that creates faithful clinician- and patient-facing summaries from clinical notes and structured EHR data.",
+      fullDescription: "• Built a nine-stage pipeline that parses clinical notes and FHIR R4 data into a shared evidence store before summary generation\n• Extracted and verified clinical claims against structured records, allowing the generator to use only pre-verified facts\n• Added deterministic gates for uncited assertions, fabricated evidence identifiers, numeric drift, and medication errors\n• Evaluated clinician- and patient-facing summaries on 100 MIMIC-III cases, improving ROUGE, BERTScore, and clinical entity recall over a single-shot baseline",
+      technologies: ["Python", "LLMs", "FHIR R4", "Ollama", "Gemma", "Clinical NLP", "MIMIC-III"],
+      githubLink: "https://github.com/natejly/EHR-Summary",
+      paperLink: "https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/Reliable-EHR-Summarization.pdf",
+      placeDeveloped: "Yale University",
     },
 
     {
-      title: "Curate",
-      shortDescription: "Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training.",
-      fullDescription: "• Machine learning training platform with LLM hyperparameter tuning to automate and optimize model training\n• Integrated RAG using LangChain and Pinecone vector database for context-aware hyperparameter optimization\n• Built scalable AWS pipeline with SageMaker for dataset processing, model training, logging, and deployment\n• Developed Next.js dashboard with real-time training metrics, interactive visualizations, and progress tracking",
-      technologies: ["Next.js", "TypeScript", "AWS SageMaker", "LangChain", "Pinecone", "RAG", "LLM", "Python"],
-      githubLink: "https://github.com/natejly/Curate",
-      placeDeveloped: "Personal",
+      title: "Prediction Markets as Bayesian Inverse Models",
+      shortDescription: "Dynamic price-volume models and empirical analysis of Bayesian outcome inference on real prediction-market data.",
+      fullDescription: "• Extended a Bayesian inverse framework by modeling prediction-market price and volume histories as a jointly Markov process\n• Designed reversal, momentum, burst, and volume-gated likelihood models with Sequential Monte Carlo inference\n• Tested the models on 1,000 resolved Polymarket markets and analyzed accuracy, calibration, Brier score, and posterior overconfidence\n• Validated posterior concentration and identifiability guarantees through synthetic experiments across multiple time horizons",
+      technologies: ["Bayesian Inference", "Sequential Monte Carlo", "Markov Models", "Python", "SciPy", "Polymarket"],
+      githubLink: "https://github.com/natejly/pred-mkts-dynamic-price-volume",
+      paperLink: "https://media.githubusercontent.com/media/natejly/portfolio/main/src/assets/Prediction-Markets-Bayesian-Inverse-Models.pdf",
+      placeDeveloped: "Yale University",
     },
 
     {
