@@ -131,7 +131,7 @@ function Experience() {
         "Build knowledge graphs that ground AI agents in semantic context and design evaluations for harness changes.",
         "Built CI/CD for version controlling the Snowflake semantic layer, enabling reliable MCP access for AI agents."
       ],
-      skills: []
+      skills: ["Knowledge Graphs", "AI Agents", "CI/CD", "Snowflake", "MCP", "Semantic Layers"]
     },
     {
       dateRange: "OCT. 2025 — PRESENT",
