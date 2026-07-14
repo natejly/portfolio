@@ -9,8 +9,7 @@ const ResumeCard = ({
   title,
   company,
   location,
-  description,
-  skills
+  description
 }) => {
   const { isDarkMode } = useDarkMode();
   
@@ -89,29 +88,6 @@ const ResumeCard = ({
           )}
         </div>
         
-        {skills?.length > 0 && (
-          <div className="space-y-3">
-            <div className={`text-sm font-medium ${
-              isDarkMode ? 'text-slate-400' : 'text-[#5e6778]'
-            } font-body`}>
-              Skills & Technologies
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((skill, skillIndex) => (
-                <span
-                  key={skillIndex}
-                  className={`px-3 py-1 rounded-md text-sm ${
-                    isDarkMode 
-                      ? 'bg-slate-700 text-slate-300' 
-                      : 'bg-[#edf2ff] text-[#14223a]'
-                  }`}
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
@@ -130,32 +106,28 @@ function Experience() {
       description: [
         "Build knowledge graphs that ground AI agents in semantic context and design evaluations for harness changes.",
         "Built CI/CD for version controlling the Snowflake semantic layer, enabling reliable MCP access for AI agents."
-      ],
-      skills: ["Knowledge Graphs", "AI Agents", "CI/CD", "Snowflake", "MCP", "Semantic Layers"]
+      ]
     },
     {
       dateRange: "OCT. 2025 — PRESENT",
       title: "Machine Learning Consultant",
       company: "Kodiak Sciences Inc.",
       location: "Remote",
-      description: "Develop machine learning models and infrastructure.",
-      skills: []
+      description: "Develop machine learning models and infrastructure."
     },
     {
       dateRange: "JUN. 2025 — AUG. 2025",
       title: "Machine Learning Intern",
       company: "Kodiak Sciences Inc.",
       location: "Palo Alto, CA",
-      description: "Developing deep learning models for cleaning and segmenting retinal images. Designed robust pupil-tracking algorithm to label images for CNN based approach, deploying models to production with ONNX.",
-      skills: ["TensorFlow", "ONNX", "C++", "Computer Vision", "Deep Learning", "OpenCV", "Segmentation"]
+      description: "Developing deep learning models for cleaning and segmenting retinal images. Designed robust pupil-tracking algorithm to label images for CNN based approach, deploying models to production with ONNX."
     },
     {
       dateRange: "MAY 2022 — AUG. 2024",
       title: "Software Development Intern",
       company: "The Donald Danforth Plant Science Center",
       location: "St. Louis, MO",
-      description: "Developed analysis and mesh simplification modules, resolving 150+ code issues via CI/CD best practices. Ensured 100% test coverage with pytest and Codecov.",
-      skills: ["Python", "pytest", "CI/CD", "Codecov", "R", "3D Processing", "AR/VR", "Mesh Simplification"]
+      description: "Developed analysis and mesh simplification modules, resolving 150+ code issues via CI/CD best practices. Ensured 100% test coverage with pytest and Codecov."
     }
   ];
 
